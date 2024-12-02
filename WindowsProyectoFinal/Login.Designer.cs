@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             this.panLogin1 = new System.Windows.Forms.Panel();
-            this.panLogin2 = new System.Windows.Forms.FlowLayoutPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.labelSlogan = new System.Windows.Forms.Label();
             this.groupBoxLogin = new System.Windows.Forms.GroupBox();
             this.bSalirLogin = new System.Windows.Forms.Button();
             this.bRegreLogin = new System.Windows.Forms.Button();
+            this.labelSlogan = new System.Windows.Forms.Label();
+            this.panLogin2 = new System.Windows.Forms.FlowLayoutPanel();
             this.panLogin1.SuspendLayout();
-            this.panLogin2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panLogin2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panLogin1
@@ -50,15 +50,6 @@
             this.panLogin1.Size = new System.Drawing.Size(170, 767);
             this.panLogin1.TabIndex = 0;
             // 
-            // panLogin2
-            // 
-            this.panLogin2.Controls.Add(this.labelSlogan);
-            this.panLogin2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panLogin2.Location = new System.Drawing.Point(170, 0);
-            this.panLogin2.Name = "panLogin2";
-            this.panLogin2.Size = new System.Drawing.Size(1004, 104);
-            this.panLogin2.TabIndex = 1;
-            // 
             // pictureBox1
             // 
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -70,18 +61,6 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
-            // 
-            // labelSlogan
-            // 
-            this.labelSlogan.AutoSize = true;
-            this.labelSlogan.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.labelSlogan.Font = new System.Drawing.Font("Segoe UI", 24F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSlogan.Location = new System.Drawing.Point(3, 0);
-            this.labelSlogan.Name = "labelSlogan";
-            this.labelSlogan.Size = new System.Drawing.Size(639, 54);
-            this.labelSlogan.TabIndex = 0;
-            this.labelSlogan.Text = "CALIDAD QUE DEFINE TU ESTILO";
-            this.labelSlogan.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // groupBoxLogin
             // 
@@ -113,6 +92,27 @@
             this.bRegreLogin.Text = "REGRESAR";
             this.bRegreLogin.UseVisualStyleBackColor = true;
             // 
+            // labelSlogan
+            // 
+            this.labelSlogan.AutoSize = true;
+            this.labelSlogan.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.labelSlogan.Font = new System.Drawing.Font("Segoe UI", 24F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSlogan.Location = new System.Drawing.Point(3, 0);
+            this.labelSlogan.Name = "labelSlogan";
+            this.labelSlogan.Size = new System.Drawing.Size(0, 54);
+            this.labelSlogan.TabIndex = 0;
+            this.labelSlogan.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelSlogan.Click += new System.EventHandler(this.labelSlogan_Click);
+            // 
+            // panLogin2
+            // 
+            this.panLogin2.Controls.Add(this.labelSlogan);
+            this.panLogin2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panLogin2.Location = new System.Drawing.Point(170, 0);
+            this.panLogin2.Name = "panLogin2";
+            this.panLogin2.Size = new System.Drawing.Size(1004, 104);
+            this.panLogin2.TabIndex = 1;
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -127,9 +127,9 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             this.panLogin1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panLogin2.ResumeLayout(false);
             this.panLogin2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -138,10 +138,10 @@
 
         private System.Windows.Forms.Panel panLogin1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.FlowLayoutPanel panLogin2;
-        private System.Windows.Forms.Label labelSlogan;
         private System.Windows.Forms.GroupBox groupBoxLogin;
         private System.Windows.Forms.Button bSalirLogin;
         private System.Windows.Forms.Button bRegreLogin;
+        private System.Windows.Forms.Label labelSlogan;
+        private System.Windows.Forms.FlowLayoutPanel panLogin2;
     }
 }

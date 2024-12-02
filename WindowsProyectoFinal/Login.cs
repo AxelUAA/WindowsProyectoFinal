@@ -16,5 +16,10 @@ namespace WindowsProyectoFinal
         {
             InitializeComponent();
         }
+
+        private void labelSlogan_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
