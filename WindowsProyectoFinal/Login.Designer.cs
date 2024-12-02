@@ -33,6 +33,8 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.labelSlogan = new System.Windows.Forms.Label();
             this.groupBoxLogin = new System.Windows.Forms.GroupBox();
+            this.bSalirLogin = new System.Windows.Forms.Button();
+            this.bRegreLogin = new System.Windows.Forms.Button();
             this.panLogin1.SuspendLayout();
             this.panLogin2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -86,16 +88,38 @@
             this.groupBoxLogin.Font = new System.Drawing.Font("Segoe UI", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxLogin.Location = new System.Drawing.Point(247, 121);
             this.groupBoxLogin.Name = "groupBoxLogin";
-            this.groupBoxLogin.Size = new System.Drawing.Size(821, 439);
+            this.groupBoxLogin.Size = new System.Drawing.Size(821, 478);
             this.groupBoxLogin.TabIndex = 2;
             this.groupBoxLogin.TabStop = false;
             this.groupBoxLogin.Text = "BIENVENIDO";
+            // 
+            // bSalirLogin
+            // 
+            this.bSalirLogin.Font = new System.Drawing.Font("Segoe UI", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bSalirLogin.Location = new System.Drawing.Point(731, 615);
+            this.bSalirLogin.Name = "bSalirLogin";
+            this.bSalirLogin.Size = new System.Drawing.Size(152, 44);
+            this.bSalirLogin.TabIndex = 3;
+            this.bSalirLogin.Text = "SALIR";
+            this.bSalirLogin.UseVisualStyleBackColor = true;
+            // 
+            // bRegreLogin
+            // 
+            this.bRegreLogin.Font = new System.Drawing.Font("Segoe UI", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bRegreLogin.Location = new System.Drawing.Point(915, 615);
+            this.bRegreLogin.Name = "bRegreLogin";
+            this.bRegreLogin.Size = new System.Drawing.Size(153, 44);
+            this.bRegreLogin.TabIndex = 4;
+            this.bRegreLogin.Text = "REGRESAR";
+            this.bRegreLogin.UseVisualStyleBackColor = true;
             // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1174, 767);
+            this.Controls.Add(this.bRegreLogin);
+            this.Controls.Add(this.bSalirLogin);
             this.Controls.Add(this.groupBoxLogin);
             this.Controls.Add(this.panLogin2);
             this.Controls.Add(this.panLogin1);
@@ -117,5 +141,7 @@
         private System.Windows.Forms.FlowLayoutPanel panLogin2;
         private System.Windows.Forms.Label labelSlogan;
         private System.Windows.Forms.GroupBox groupBoxLogin;
+        private System.Windows.Forms.Button bSalirLogin;
+        private System.Windows.Forms.Button bRegreLogin;
     }
 }
