@@ -35,8 +35,10 @@
             this.bRegreLogin = new System.Windows.Forms.Button();
             this.labelSlogan = new System.Windows.Forms.Label();
             this.panLogin2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.label1 = new System.Windows.Forms.Label();
             this.panLogin1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.groupBoxLogin.SuspendLayout();
             this.panLogin2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,6 +66,7 @@
             // 
             // groupBoxLogin
             // 
+            this.groupBoxLogin.Controls.Add(this.label1);
             this.groupBoxLogin.Font = new System.Drawing.Font("Segoe UI", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxLogin.Location = new System.Drawing.Point(247, 121);
             this.groupBoxLogin.Name = "groupBoxLogin";
@@ -113,6 +116,15 @@
             this.panLogin2.Size = new System.Drawing.Size(1004, 104);
             this.panLogin2.TabIndex = 1;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(269, 205);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(81, 31);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "label1";
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -128,6 +140,8 @@
             this.Text = "Login";
             this.panLogin1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.groupBoxLogin.ResumeLayout(false);
+            this.groupBoxLogin.PerformLayout();
             this.panLogin2.ResumeLayout(false);
             this.panLogin2.PerformLayout();
             this.ResumeLayout(false);
@@ -143,5 +157,6 @@
         private System.Windows.Forms.Button bRegreLogin;
         private System.Windows.Forms.Label labelSlogan;
         private System.Windows.Forms.FlowLayoutPanel panLogin2;
+        private System.Windows.Forms.Label label1;
     }
 }
