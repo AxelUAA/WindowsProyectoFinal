@@ -16,5 +16,10 @@ namespace WindowsProyectoFinal
         {
             InitializeComponent();
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            Size = new Size(1085, 605);
+        }
     }
 }
