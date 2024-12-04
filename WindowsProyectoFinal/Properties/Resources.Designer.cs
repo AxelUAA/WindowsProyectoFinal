@@ -79,5 +79,15 @@ namespace WindowsProyectoFinal.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Screenshot_2024_11_27_113419 {
+            get {
+                object obj = ResourceManager.GetObject("Screenshot 2024-11-27 113419", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

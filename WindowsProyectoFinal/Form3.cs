@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace WindowsProyectoFinal
 {
-    public partial class Form3 : Form
+    public partial class Stock : Form
     {
-        public Form3()
+        public Stock()
         {
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
