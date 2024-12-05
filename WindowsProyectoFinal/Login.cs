@@ -73,7 +73,7 @@ namespace WindowsProyectoFinal
             if (txtBoxUsuario.Text == "USUARIO")
             {
                 txtBoxUsuario.Text = "";
-                txtBoxUsuario.ForeColor = Color.Black;
+                txtBoxUsuario.ForeColor = Color.White;
             }
         }
 
@@ -162,28 +162,24 @@ namespace WindowsProyectoFinal
             btnIngresar.BackColor = Color.White;
             btnIngresar.ForeColor = Color.Black;
 
-            string usuario = txtBoxUsuario.Text;
-            string contrasena = txtBoxContra.Text;
+            string cuenta = txtBoxUsuario.Text;
+            string password = txtBoxContra.Text;
 
-            AdminLogin login = new AdminLogin();
+            AdminLogin adminLogin = new AdminLogin();
 
-            if (!login.ValidarCampos(usuario,contrasena))
+            if (adminLogin.ValidarCampos(cuenta, password))
             {
-                return;
-            }
-
-            string tipoUsuario;
-            if (!login.ValidarTipoUsuario(radioAdmin, radioUsuario, radioInvitado, out tipoUsuario))
-                return;
-
-            if (login.ValidarCredenciales(usuario, contrasena, tipoUsuario))
-            {
-                MessageBox.Show($"Ingreso correcto como {tipoUsuario}");
-                // Aquí redirigirías al siguiente formulario o realizarías alguna acción
-            }
-            else
-            {
-                MessageBox.Show("Usuario o contraseña incorrectos.");
+                if (adminLogin.ValidarUsuario(cuenta, password))
+                {
+                    MessageBox.Show("Inicio de sesión exitoso.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Hide();
+                    Form3 form3 = new Form3();
+                    form3.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("Credenciales incorrectas.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
