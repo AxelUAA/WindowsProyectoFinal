@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,22 @@ namespace WindowsProyectoFinal
 {
     public class AdminLogin
     {
+        private MySqlConnection connection;
+
+        public AdminLogin()
+        {
+            this.Connect();
+        }
+
+        public void Disconnect()
+        {
+            if (connection != null && connection.State == System.Data.ConnectionState.Open)
+            {
+                connection.Close();
+                MessageBox.Show("Conexión cerrada correctamente.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
         public bool ValidarCampos(string usuario, string contrasena)
         {
             if (string.IsNullOrEmpty(usuario) || string.IsNullOrEmpty(contrasena))
@@ -38,7 +55,7 @@ namespace WindowsProyectoFinal
             return true;
         }
 
-        public bool ValidarCredenciales(string usuario, string contrasena, string tipoUsuario)
+        /*public bool ValidarCredenciales(string usuario, string contrasena, string tipoUsuario)
         {
             // Aquí puedes conectar tu base de datos para validar las credenciales
             // Simulando validación simple:
@@ -52,6 +69,50 @@ namespace WindowsProyectoFinal
                     return usuario == "invitado" && contrasena == "inv123";
                 default:
                     return false;
+            }
+        }*/
+
+        public bool ValidarUsuario(string cuenta, string password)
+        {
+            try
+            {
+                string query = "SELECT * FROM usuarios WHERE cuenta = @cuenta AND contra = @contra";
+                MySqlCommand command = new MySqlCommand(query, this.connection);
+                command.Parameters.AddWithValue("@cuenta", cuenta);
+                command.Parameters.AddWithValue("@contra", password);
+
+                // Ejecutar la consulta y leer los resultados
+                MySqlDataReader reader = command.ExecuteReader();
+                if (reader.Read())
+                {
+                    reader.Close();
+                    return true; //validamos si la lectura fue correcta
+                }
+
+                reader.Close();
+                MessageBox.Show("Usuario o contraseña incorrectos.");
+                return false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al validar usuario: {ex.Message}");
+                return false;
+            }
+        }
+
+
+        public void Connect()
+        {
+            string cadena = "Server=localhost; Database=proyecto; User=root; Password=; SslMode=none;";
+            try
+            {
+                connection = new MySqlConnection(cadena);
+                connection.Open();
+                MessageBox.Show("Conexión establecida exitosamente.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al conectar con la base de datos: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
