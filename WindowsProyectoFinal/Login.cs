@@ -173,8 +173,8 @@ namespace WindowsProyectoFinal
                 {
                     MessageBox.Show("Inicio de sesión exitoso.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Hide();
-                    Form3 form3 = new Form3();
-                    form3.ShowDialog();
+                    Stock Stock = new Stock();
+                    Stock.ShowDialog();
                 }
                 else
                 {
