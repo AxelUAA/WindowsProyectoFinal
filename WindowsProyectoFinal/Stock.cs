@@ -7,14 +7,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.VisualBasic.ApplicationServices;
 
 namespace WindowsProyectoFinal
 {
     public partial class Stock : Form
     {
-        public Stock()
+        private Dictionary<int, string> userRoles = new Dictionary<int, string>
+        {
+            { 1, "Admin" },
+            { 2, "Invitado " },
+            { 286973, "User " },
+            { 334582, "User " },
+            { 442536, "User " },
+            { 511513, "User " }
+
+        };
+
+        private int currentUserId;
+        public Stock(int userId)
         {
             InitializeComponent();
+            currentUserId = userId;
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -88,6 +102,27 @@ namespace WindowsProyectoFinal
             }
         }
 
+        private void OpcAdmin_Click(object sender, EventArgs e)
+        {
+    
+                // If the user is an admin, open the Opciones Admin form
+                OpcionesAdmin opcionesAdmin = new OpcionesAdmin();
+                opcionesAdmin.ShowDialog();
+            
+            /*else
+            {
+                // If the user is not an admin, show a message
+                MessageBox.Show("No tienes permisos para acceder a esta opción.", "Acceso Denegado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }*/
+        }
 
+        // Método para verificar si el usuario es administrador
+        private bool EsUsuarioAdministrador()
+        {
+            // Aquí deberías implementar la lógica para verificar si el usuario es administrador
+            // Por ejemplo, podrías tener una variable booleana que se establezca al iniciar sesión
+            return true; // Cambia esto según tu lógica de autenticación
+        }
     }
+    
 }

@@ -55,23 +55,6 @@ namespace WindowsProyectoFinal
             return true;
         }
 
-        /*public bool ValidarCredenciales(string usuario, string contrasena, string tipoUsuario)
-        {
-            // Aquí puedes conectar tu base de datos para validar las credenciales
-            // Simulando validación simple:
-            switch (tipoUsuario)
-            {
-                case "Administrador":
-                    return usuario == "admin" && contrasena == "admin123";
-                case "Usuario":
-                    return usuario == "usuario" && contrasena == "user123";
-                case "Invitado":
-                    return usuario == "invitado" && contrasena == "inv123";
-                default:
-                    return false;
-            }
-        }*/
-
         public bool ValidarUsuario(string cuenta, string password)
         {
             try
@@ -115,6 +98,7 @@ namespace WindowsProyectoFinal
                 MessageBox.Show($"Error al conectar con la base de datos: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
 
     }

@@ -13,6 +13,7 @@ namespace WindowsProyectoFinal
 {
     public partial class Login : Form
     {
+        private int userId;
         public Login()
         {
             InitializeComponent();
@@ -173,7 +174,7 @@ namespace WindowsProyectoFinal
                 {
                     MessageBox.Show("Inicio de sesión exitoso.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Hide();
-                    Stock Stock = new Stock();
+                    Stock Stock = new Stock(userId);
                     Stock.ShowDialog();
                 }
                 else
