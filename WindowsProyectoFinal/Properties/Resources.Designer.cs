@@ -103,6 +103,16 @@ namespace WindowsProyectoFinal.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Fondo5 {
+            get {
+                object obj = ResourceManager.GetObject("Fondo5", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Home__1___1_ {
             get {
                 object obj = ResourceManager.GetObject("Home (1) (1)", resourceCulture);
