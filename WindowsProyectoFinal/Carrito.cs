@@ -1,0 +1,25 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace WindowsProyectoFinal
+{
+    public partial class Carrito : Form
+    {
+        public Carrito()
+        {
+            InitializeComponent();
+        }
+
+        private void groupBoxLogin_Enter(object sender, EventArgs e)
+        {
+
+        }
+    }
+}
