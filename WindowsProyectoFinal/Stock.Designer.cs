@@ -50,19 +50,21 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.textBoxNombre = new System.Windows.Forms.TextBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.buttonLogout = new System.Windows.Forms.Button();
+            this.OpcAdmin = new System.Windows.Forms.Button();
             this.buttonCarro = new System.Windows.Forms.Button();
             this.buttonVer = new System.Windows.Forms.Button();
-            this.OpcAdmin = new System.Windows.Forms.Button();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.panel7.SuspendLayout();
-            this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -333,8 +335,20 @@
             this.panel2.Size = new System.Drawing.Size(265, 182);
             this.panel2.TabIndex = 1;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pictureBox1.Image = global::WindowsProyectoFinal.Properties.Resources.Logo2;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(265, 196);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            // 
             // panel7
             // 
+            this.panel7.Controls.Add(this.textBoxNombre);
             this.panel7.Controls.Add(this.pictureBox2);
             this.panel7.Location = new System.Drawing.Point(272, -1);
             this.panel7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -342,8 +356,30 @@
             this.panel7.Size = new System.Drawing.Size(769, 182);
             this.panel7.TabIndex = 1;
             // 
+            // textBoxNombre
+            // 
+            this.textBoxNombre.Enabled = false;
+            this.textBoxNombre.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxNombre.Location = new System.Drawing.Point(517, 128);
+            this.textBoxNombre.Name = "textBoxNombre";
+            this.textBoxNombre.Size = new System.Drawing.Size(241, 25);
+            this.textBoxNombre.TabIndex = 3;
+            this.textBoxNombre.TextChanged += new System.EventHandler(this.textBoxNombre_TextChanged);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pictureBox2.Image = global::WindowsProyectoFinal.Properties.Resources.Screenshot_2024_12_04_191531;
+            this.pictureBox2.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(769, 174);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 2;
+            this.pictureBox2.TabStop = false;
+            // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.buttonLogout);
             this.panel3.Controls.Add(this.OpcAdmin);
             this.panel3.Controls.Add(this.buttonCarro);
             this.panel3.Controls.Add(this.buttonVer);
@@ -353,11 +389,37 @@
             this.panel3.Size = new System.Drawing.Size(227, 438);
             this.panel3.TabIndex = 2;
             // 
+            // buttonLogout
+            // 
+            this.buttonLogout.BackColor = System.Drawing.SystemColors.GrayText;
+            this.buttonLogout.Font = new System.Drawing.Font("Segoe UI Black", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonLogout.Location = new System.Drawing.Point(41, 368);
+            this.buttonLogout.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonLogout.Name = "buttonLogout";
+            this.buttonLogout.Size = new System.Drawing.Size(144, 43);
+            this.buttonLogout.TabIndex = 3;
+            this.buttonLogout.Text = "Logout";
+            this.buttonLogout.UseVisualStyleBackColor = false;
+            this.buttonLogout.Click += new System.EventHandler(this.buttonLogout_Click);
+            // 
+            // OpcAdmin
+            // 
+            this.OpcAdmin.BackColor = System.Drawing.SystemColors.GrayText;
+            this.OpcAdmin.Font = new System.Drawing.Font("Segoe UI Black", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.OpcAdmin.Location = new System.Drawing.Point(0, 44);
+            this.OpcAdmin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.OpcAdmin.Name = "OpcAdmin";
+            this.OpcAdmin.Size = new System.Drawing.Size(215, 32);
+            this.OpcAdmin.TabIndex = 2;
+            this.OpcAdmin.Text = "Opciones Admin";
+            this.OpcAdmin.UseVisualStyleBackColor = false;
+            this.OpcAdmin.Click += new System.EventHandler(this.OpcAdmin_Click);
+            // 
             // buttonCarro
             // 
             this.buttonCarro.BackColor = System.Drawing.SystemColors.GrayText;
             this.buttonCarro.Font = new System.Drawing.Font("Segoe UI Black", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonCarro.Location = new System.Drawing.Point(13, 224);
+            this.buttonCarro.Location = new System.Drawing.Point(21, 176);
             this.buttonCarro.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonCarro.Name = "buttonCarro";
             this.buttonCarro.Size = new System.Drawing.Size(183, 143);
@@ -378,41 +440,6 @@
             this.buttonVer.UseVisualStyleBackColor = false;
             this.buttonVer.Click += new System.EventHandler(this.buttonVer_Click);
             // 
-            // OpcAdmin
-            // 
-            this.OpcAdmin.BackColor = System.Drawing.SystemColors.GrayText;
-            this.OpcAdmin.Font = new System.Drawing.Font("Segoe UI Black", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.OpcAdmin.Location = new System.Drawing.Point(0, 44);
-            this.OpcAdmin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.OpcAdmin.Name = "OpcAdmin";
-            this.OpcAdmin.Size = new System.Drawing.Size(215, 32);
-            this.OpcAdmin.TabIndex = 2;
-            this.OpcAdmin.Text = "Opciones Admin";
-            this.OpcAdmin.UseVisualStyleBackColor = false;
-            this.OpcAdmin.Click += new System.EventHandler(this.OpcAdmin_Click);
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pictureBox2.Image = global::WindowsProyectoFinal.Properties.Resources.Screenshot_2024_12_04_191531;
-            this.pictureBox2.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(769, 174);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 2;
-            this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pictureBox1.Image = global::WindowsProyectoFinal.Properties.Resources.Logo2;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(265, 196);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
-            // 
             // Stock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -427,13 +454,15 @@
             this.Name = "Stock";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Stock";
+            this.Load += new System.EventHandler(this.Stock_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
-            this.panel7.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -469,5 +498,7 @@
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button OpcAdmin;
+        private System.Windows.Forms.Button buttonLogout;
+        private System.Windows.Forms.TextBox textBoxNombre;
     }
 }

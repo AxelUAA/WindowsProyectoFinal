@@ -8,11 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.VisualBasic.ApplicationServices;
+using MySql.Data.MySqlClient;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace WindowsProyectoFinal
 {
     public partial class Stock : Form
     {
+        //vars
+        private string name;
+
         private Dictionary<int, string> userRoles = new Dictionary<int, string>
         {
             { 1, "Admin" },
@@ -25,10 +30,11 @@ namespace WindowsProyectoFinal
         };
 
         private int currentUserId;
-        public Stock(int userId)
+        public Stock(int userId, string nombre)
         {
             InitializeComponent();
-            currentUserId = userId;
+            this.name = nombre;
+            this.textBoxNombre.Text = this.name;
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -122,6 +128,23 @@ namespace WindowsProyectoFinal
             // Aquí deberías implementar la lógica para verificar si el usuario es administrador
             // Por ejemplo, podrías tener una variable booleana que se establezca al iniciar sesión
             return true; // Cambia esto según tu lógica de autenticación
+        }
+
+        private void Stock_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonLogout_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Login loginForm = new Login();
+            loginForm.ShowDialog();
+        }
+
+        private void textBoxNombre_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
     
