@@ -16,5 +16,10 @@ namespace WindowsProyectoFinal
         {
             InitializeComponent();
         }
+
+        private void GraficosVentas_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
