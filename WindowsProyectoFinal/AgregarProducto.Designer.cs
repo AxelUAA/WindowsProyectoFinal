@@ -37,8 +37,9 @@
             this.pictureBoxProducto = new System.Windows.Forms.PictureBox();
             this.btnCargarImagen = new System.Windows.Forms.Button();
             this.txtExistencias = new System.Windows.Forms.TextBox();
-            this.btnAgregar = new System.Windows.Forms.Button();
+            this.btnGuardarProducto = new System.Windows.Forms.Button();
             this.btnCanAgregar = new System.Windows.Forms.Button();
+            this.btnSalirDeAgregar = new System.Windows.Forms.Button();
             this.panel1AggPro.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProducto)).BeginInit();
@@ -139,31 +140,44 @@
             this.txtExistencias.TabIndex = 7;
             this.txtExistencias.Text = "Existencias";
             // 
-            // btnAgregar
+            // btnGuardarProducto
             // 
-            this.btnAgregar.BackColor = System.Drawing.SystemColors.ControlText;
-            this.btnAgregar.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregar.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnAgregar.Location = new System.Drawing.Point(965, 325);
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(228, 97);
-            this.btnAgregar.TabIndex = 8;
-            this.btnAgregar.Text = "AGREGAR";
-            this.btnAgregar.UseVisualStyleBackColor = false;
-            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            this.btnGuardarProducto.BackColor = System.Drawing.SystemColors.ControlText;
+            this.btnGuardarProducto.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardarProducto.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnGuardarProducto.Location = new System.Drawing.Point(965, 228);
+            this.btnGuardarProducto.Name = "btnGuardarProducto";
+            this.btnGuardarProducto.Size = new System.Drawing.Size(228, 97);
+            this.btnGuardarProducto.TabIndex = 8;
+            this.btnGuardarProducto.Text = "AGREGAR";
+            this.btnGuardarProducto.UseVisualStyleBackColor = false;
+            this.btnGuardarProducto.Click += new System.EventHandler(this.btnGuardarProducto_Click);
             // 
             // btnCanAgregar
             // 
             this.btnCanAgregar.BackColor = System.Drawing.SystemColors.ControlText;
             this.btnCanAgregar.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCanAgregar.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnCanAgregar.Location = new System.Drawing.Point(965, 498);
+            this.btnCanAgregar.Location = new System.Drawing.Point(965, 354);
             this.btnCanAgregar.Name = "btnCanAgregar";
             this.btnCanAgregar.Size = new System.Drawing.Size(228, 97);
             this.btnCanAgregar.TabIndex = 9;
             this.btnCanAgregar.Text = "CANCELAR";
             this.btnCanAgregar.UseVisualStyleBackColor = false;
             this.btnCanAgregar.Click += new System.EventHandler(this.btnCanAgregar_Click);
+            // 
+            // btnSalirDeAgregar
+            // 
+            this.btnSalirDeAgregar.BackColor = System.Drawing.SystemColors.ControlText;
+            this.btnSalirDeAgregar.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalirDeAgregar.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnSalirDeAgregar.Location = new System.Drawing.Point(953, 677);
+            this.btnSalirDeAgregar.Name = "btnSalirDeAgregar";
+            this.btnSalirDeAgregar.Size = new System.Drawing.Size(228, 97);
+            this.btnSalirDeAgregar.TabIndex = 10;
+            this.btnSalirDeAgregar.Text = "SALIR";
+            this.btnSalirDeAgregar.UseVisualStyleBackColor = false;
+            this.btnSalirDeAgregar.Click += new System.EventHandler(this.btnSalirDeAgregar_Click);
             // 
             // AgregarProducto
             // 
@@ -172,8 +186,9 @@
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.BackgroundImage = global::WindowsProyectoFinal.Properties.Resources.Fondo5;
             this.ClientSize = new System.Drawing.Size(1385, 860);
+            this.Controls.Add(this.btnSalirDeAgregar);
             this.Controls.Add(this.btnCanAgregar);
-            this.Controls.Add(this.btnAgregar);
+            this.Controls.Add(this.btnGuardarProducto);
             this.Controls.Add(this.txtExistencias);
             this.Controls.Add(this.btnCargarImagen);
             this.Controls.Add(this.pictureBoxProducto);
@@ -204,7 +219,8 @@
         private System.Windows.Forms.PictureBox pictureBoxProducto;
         private System.Windows.Forms.Button btnCargarImagen;
         private System.Windows.Forms.TextBox txtExistencias;
-        private System.Windows.Forms.Button btnAgregar;
+        private System.Windows.Forms.Button btnGuardarProducto;
         private System.Windows.Forms.Button btnCanAgregar;
+        private System.Windows.Forms.Button btnSalirDeAgregar;
     }
 }
