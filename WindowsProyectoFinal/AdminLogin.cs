@@ -11,6 +11,7 @@ namespace WindowsProyectoFinal
     public class AdminLogin
     {
         private MySqlConnection connection;
+        public string name { get; set; }
 
         public AdminLogin()
         {
@@ -59,15 +60,21 @@ namespace WindowsProyectoFinal
         {
             try
             {
+                //var que se va a pasar al form 
+                string name = string.Empty;
+
                 string query = "SELECT * FROM usuarios WHERE cuenta = @cuenta AND contra = @contra";
                 MySqlCommand command = new MySqlCommand(query, this.connection);
                 command.Parameters.AddWithValue("@cuenta", cuenta);
                 command.Parameters.AddWithValue("@contra", password);
+                
+
 
                 // Ejecutar la consulta y leer los resultados
                 MySqlDataReader reader = command.ExecuteReader();
                 if (reader.Read())
                 {
+                    this.name = reader["nombre"].ToString(); //leer el nombre 
                     reader.Close();
                     return true; //validamos si la lectura fue correcta
                 }

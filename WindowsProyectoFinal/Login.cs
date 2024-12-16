@@ -14,12 +14,14 @@ namespace WindowsProyectoFinal
     public partial class Login : Form
     {
         private int userId;
+        private string nombre;
         public Login()
         {
             InitializeComponent();
+           // MessageBox.Show("Bienvenido!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             PersonalizarMenu();
-
         }
+
 
         private void PersonalizarMenu()
         {
@@ -172,9 +174,11 @@ namespace WindowsProyectoFinal
             {
                 if (adminLogin.ValidarUsuario(cuenta, password))
                 {
+                    // Obtenemos el nombre del usuario desde la propiedad
+                    nombre = adminLogin.name;
                     MessageBox.Show("Inicio de sesión exitoso.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Hide();
-                    Stock Stock = new Stock(userId);
+                    Stock Stock = new Stock(userId, nombre);
                     Stock.ShowDialog();
                 }
                 else
