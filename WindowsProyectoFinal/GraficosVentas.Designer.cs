@@ -38,6 +38,7 @@
             this.ClientSize = new System.Drawing.Size(1295, 761);
             this.Name = "GraficosVentas";
             this.Text = "GraficosVentas";
+            this.Load += new System.EventHandler(this.GraficosVentas_Load);
             this.ResumeLayout(false);
 
         }
