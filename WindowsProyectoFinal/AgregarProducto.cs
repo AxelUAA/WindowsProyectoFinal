@@ -65,16 +65,16 @@ namespace WindowsProyectoFinal
                     using (MySqlConnection connection = new MySqlConnection("Server=localhost; Database=proyecto; User=root; Password=; SslMode=none;"))
                     {
                         connection.Open();
-                        string query = "INSERT INTO proyecto (nombre, descripcion, precio, existencias, imagen) VALUES (@nombre, @descripcion, @precio, @existencias, @imagen)";
+                        string query = "INSERT INTO productos (id, descripcion, precio, stock, nombreimagen) VALUES (@id, @descripcion, @precio, @stock, @nombreimagen)";
 
                         using (MySqlCommand cmd = new MySqlCommand(query, connection))
                         {
                             // Parámetros del producto
-                            cmd.Parameters.AddWithValue("@nombre", txtId.Text);
+                            cmd.Parameters.AddWithValue("@id", Convert.ToInt32(txtId.Text));
                             cmd.Parameters.AddWithValue("@descripcion", txtDescripcion.Text);
                             cmd.Parameters.AddWithValue("@precio", Convert.ToDecimal(txtPrecio.Text));
-                            cmd.Parameters.AddWithValue("@existencias", Convert.ToInt32(txtExistencias.Text));
-                            cmd.Parameters.AddWithValue("@imagen", imagenBytes); // Insertar imagen como BLOB
+                            cmd.Parameters.AddWithValue("@stock", Convert.ToInt32(txtExistencias.Text));
+                            cmd.Parameters.AddWithValue("@nombreimagen", imagenBytes); // Insertar imagen como BLOB
 
                             cmd.ExecuteNonQuery();
                         }
@@ -124,9 +124,9 @@ namespace WindowsProyectoFinal
             }
         }
 
-        private void btnAgregar_Click(object sender, EventArgs e)
+        private void btnSalirDeAgregar_Click(object sender, EventArgs e)
         {
-
+            Application.Exit();
         }
     }
 }
