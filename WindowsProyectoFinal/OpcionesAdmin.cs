@@ -37,7 +37,8 @@ namespace WindowsProyectoFinal
 
         private void btnListado_Click(object sender, EventArgs e)
         {
-
+            ListadoProductosAdmin listado = new ListadoProductosAdmin();
+            listado.ShowDialog(this); 
         }
 
         private void btnGraficos_Click(object sender, EventArgs e)
