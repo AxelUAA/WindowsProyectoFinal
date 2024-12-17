@@ -34,8 +34,9 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.panelOpcPago = new System.Windows.Forms.Panel();
-            this.btnPagoTarjeta = new System.Windows.Forms.Button();
             this.btnPagoOxxo = new System.Windows.Forms.Button();
+            this.btnPagoTarjeta = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.groupBoxLogin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panelOpcPago.SuspendLayout();
@@ -44,6 +45,7 @@
             // groupBoxLogin
             // 
             this.groupBoxLogin.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.groupBoxLogin.Controls.Add(this.button3);
             this.groupBoxLogin.Controls.Add(this.richTextBox1);
             this.groupBoxLogin.Controls.Add(this.pictureBox2);
             this.groupBoxLogin.Font = new System.Drawing.Font("Segoe UI", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -75,7 +77,7 @@
             this.pictureBox2.Location = new System.Drawing.Point(377, 0);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(165, 181);
+            this.pictureBox2.Size = new System.Drawing.Size(165, 136);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 2;
             this.pictureBox2.TabStop = false;
@@ -117,6 +119,20 @@
             this.panelOpcPago.Size = new System.Drawing.Size(175, 100);
             this.panelOpcPago.TabIndex = 24;
             // 
+            // btnPagoOxxo
+            // 
+            this.btnPagoOxxo.BackColor = System.Drawing.Color.Black;
+            this.btnPagoOxxo.FlatAppearance.BorderSize = 0;
+            this.btnPagoOxxo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPagoOxxo.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPagoOxxo.ForeColor = System.Drawing.Color.White;
+            this.btnPagoOxxo.Location = new System.Drawing.Point(0, 52);
+            this.btnPagoOxxo.Name = "btnPagoOxxo";
+            this.btnPagoOxxo.Size = new System.Drawing.Size(175, 48);
+            this.btnPagoOxxo.TabIndex = 26;
+            this.btnPagoOxxo.Text = "Pagar en OXXO";
+            this.btnPagoOxxo.UseVisualStyleBackColor = false;
+            // 
             // btnPagoTarjeta
             // 
             this.btnPagoTarjeta.BackColor = System.Drawing.Color.Black;
@@ -132,19 +148,19 @@
             this.btnPagoTarjeta.UseVisualStyleBackColor = false;
             this.btnPagoTarjeta.Click += new System.EventHandler(this.btnPagoTarjeta_Click);
             // 
-            // btnPagoOxxo
+            // button3
             // 
-            this.btnPagoOxxo.BackColor = System.Drawing.Color.Black;
-            this.btnPagoOxxo.FlatAppearance.BorderSize = 0;
-            this.btnPagoOxxo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPagoOxxo.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPagoOxxo.ForeColor = System.Drawing.Color.White;
-            this.btnPagoOxxo.Location = new System.Drawing.Point(0, 52);
-            this.btnPagoOxxo.Name = "btnPagoOxxo";
-            this.btnPagoOxxo.Size = new System.Drawing.Size(175, 48);
-            this.btnPagoOxxo.TabIndex = 26;
-            this.btnPagoOxxo.Text = "Pagar en OXXO";
-            this.btnPagoOxxo.UseVisualStyleBackColor = false;
+            this.button3.BackColor = System.Drawing.SystemColors.ControlText;
+            this.button3.Font = new System.Drawing.Font("Segoe UI Black", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.button3.Location = new System.Drawing.Point(355, 127);
+            this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(209, 56);
+            this.button3.TabIndex = 25;
+            this.button3.Text = "Actualizar Carro";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // Carrito
             // 
@@ -175,5 +191,6 @@
         private System.Windows.Forms.Panel panelOpcPago;
         private System.Windows.Forms.Button btnPagoTarjeta;
         private System.Windows.Forms.Button btnPagoOxxo;
+        private System.Windows.Forms.Button button3;
     }
 }
