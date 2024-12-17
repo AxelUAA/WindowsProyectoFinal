@@ -80,7 +80,7 @@
             this.labelNombreTarjeta.ForeColor = System.Drawing.Color.White;
             this.labelNombreTarjeta.Location = new System.Drawing.Point(20, 134);
             this.labelNombreTarjeta.Name = "labelNombreTarjeta";
-            this.labelNombreTarjeta.Size = new System.Drawing.Size(271, 41);
+            this.labelNombreTarjeta.Size = new System.Drawing.Size(280, 41);
             this.labelNombreTarjeta.TabIndex = 2;
             this.labelNombreTarjeta.Text = "Nombre asociado a  la tarjeta";
             // 
