@@ -36,14 +36,14 @@
             this.labelTargeta = new System.Windows.Forms.Label();
             this.textBoxTarjeta = new System.Windows.Forms.TextBox();
             this.radioButtonAmerican = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioButtonMaster = new System.Windows.Forms.RadioButton();
             this.radioButtonVisa = new System.Windows.Forms.RadioButton();
             this.labelElige = new System.Windows.Forms.Label();
             this.buttonRegresar = new System.Windows.Forms.Button();
             this.labelFecha = new System.Windows.Forms.Label();
             this.textBoxFecha = new System.Windows.Forms.TextBox();
             this.labelCVV = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxCVV = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogoTarjeta)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -60,6 +60,7 @@
             this.BtnPagar.TabIndex = 0;
             this.BtnPagar.Text = "Pagar";
             this.BtnPagar.UseVisualStyleBackColor = false;
+            this.BtnPagar.Click += new System.EventHandler(this.BtnPagar_Click);
             // 
             // pictureBoxLogoTarjeta
             // 
@@ -141,19 +142,19 @@
             this.radioButtonAmerican.Text = "American Express";
             this.radioButtonAmerican.UseVisualStyleBackColor = false;
             // 
-            // radioButton1
+            // radioButtonMaster
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.BackColor = System.Drawing.Color.Transparent;
-            this.radioButton1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton1.ForeColor = System.Drawing.Color.White;
-            this.radioButton1.Location = new System.Drawing.Point(614, 282);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(128, 29);
-            this.radioButton1.TabIndex = 8;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "MasterCard";
-            this.radioButton1.UseVisualStyleBackColor = false;
+            this.radioButtonMaster.AutoSize = true;
+            this.radioButtonMaster.BackColor = System.Drawing.Color.Transparent;
+            this.radioButtonMaster.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonMaster.ForeColor = System.Drawing.Color.White;
+            this.radioButtonMaster.Location = new System.Drawing.Point(614, 282);
+            this.radioButtonMaster.Name = "radioButtonMaster";
+            this.radioButtonMaster.Size = new System.Drawing.Size(128, 29);
+            this.radioButtonMaster.TabIndex = 8;
+            this.radioButtonMaster.TabStop = true;
+            this.radioButtonMaster.Text = "MasterCard";
+            this.radioButtonMaster.UseVisualStyleBackColor = false;
             // 
             // radioButtonVisa
             // 
@@ -192,6 +193,7 @@
             this.buttonRegresar.TabIndex = 11;
             this.buttonRegresar.Text = "Regresar";
             this.buttonRegresar.UseVisualStyleBackColor = false;
+            this.buttonRegresar.Click += new System.EventHandler(this.buttonRegresar_Click);
             // 
             // labelFecha
             // 
@@ -227,15 +229,15 @@
             this.labelCVV.TabIndex = 14;
             this.labelCVV.Text = "Codigo de seguridad (CVV)";
             // 
-            // textBox1
+            // textBoxCVV
             // 
-            this.textBox1.BackColor = System.Drawing.SystemColors.GrayText;
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.ForeColor = System.Drawing.Color.White;
-            this.textBox1.Location = new System.Drawing.Point(425, 421);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 19);
-            this.textBox1.TabIndex = 15;
+            this.textBoxCVV.BackColor = System.Drawing.SystemColors.GrayText;
+            this.textBoxCVV.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxCVV.ForeColor = System.Drawing.Color.White;
+            this.textBoxCVV.Location = new System.Drawing.Point(425, 421);
+            this.textBoxCVV.Name = "textBoxCVV";
+            this.textBoxCVV.Size = new System.Drawing.Size(100, 19);
+            this.textBoxCVV.TabIndex = 15;
             // 
             // pictureBox1
             // 
@@ -256,14 +258,14 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1062, 602);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBoxCVV);
             this.Controls.Add(this.labelCVV);
             this.Controls.Add(this.textBoxFecha);
             this.Controls.Add(this.labelFecha);
             this.Controls.Add(this.buttonRegresar);
             this.Controls.Add(this.labelElige);
             this.Controls.Add(this.radioButtonVisa);
-            this.Controls.Add(this.radioButton1);
+            this.Controls.Add(this.radioButtonMaster);
             this.Controls.Add(this.radioButtonAmerican);
             this.Controls.Add(this.textBoxTarjeta);
             this.Controls.Add(this.labelTargeta);
@@ -293,14 +295,14 @@
         private System.Windows.Forms.Label labelTargeta;
         private System.Windows.Forms.TextBox textBoxTarjeta;
         private System.Windows.Forms.RadioButton radioButtonAmerican;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton radioButtonMaster;
         private System.Windows.Forms.RadioButton radioButtonVisa;
         private System.Windows.Forms.Label labelElige;
         private System.Windows.Forms.Button buttonRegresar;
         private System.Windows.Forms.Label labelFecha;
         private System.Windows.Forms.TextBox textBoxFecha;
         private System.Windows.Forms.Label labelCVV;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxCVV;
         private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
