@@ -106,7 +106,7 @@ namespace WindowsProyectoFinal
         {
     
                 // If the user is an admin, open the Opciones Admin form
-                OpcionesAdmin opcionesAdmin = new OpcionesAdmin();
+                OpcionesAdmin opcionesAdmin = new OpcionesAdmin(name);
                 opcionesAdmin.ShowDialog();
             
             /*else

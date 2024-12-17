@@ -151,26 +151,82 @@ namespace WindowsProyectoFinal
 
         private void button1_Click(object sender, EventArgs e)
         {
+            int cantidadEnCarrito1 = 0;
+
             try
             {
-                string nombreImagen = textBox1.Text; 
+                string nombreImagen = textBox1.Text;
+
                 if (!string.IsNullOrEmpty(nombreImagen))
                 {
-                    Productos producto = new Productos(0, nombreImagen, "", 0, 0); // id=0, descripción="", precio=0, stock=0
-                    CarritoGlobal.carrito.Add(producto);
+                    AdminProd adminProd = new AdminProd();
 
-                    MessageBox.Show($"Producto '{nombreImagen}' agregado al carrito.", "Carrito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    // Consultar el producto
+                    Productos producto = adminProd.ConsultaProducto(nombreImagen);
+
+                    if (producto != null)
+                    {
+                        if (producto.Stock > cantidadEnCarrito1)
+                        {
+                            // Incrementar el contador para este producto
+                            cantidadEnCarrito1++;
+
+                            // Decrementar el stock en la base de datos
+                            bool stockActualizado = adminProd.ActualizarStock(nombreImagen, producto.Stock - 1);
+
+                            if (stockActualizado)
+                            {
+                                // Agregar el producto al carrito
+                                CarritoGlobal.carrito.Add(producto);
+
+                                // Mostrar los detalles del producto
+                                MessageBox.Show(
+                                    $"Producto agregado al carrito:\n\n" +
+                                    $"Nombre: {nombreImagen}\n" +
+                                    $"Descripción: {producto.Descripcion}\n" +
+                                    $"Precio: {producto.Precio:C}\n" +
+                                    $"Existencias restantes: {producto.Stock - cantidadEnCarrito1}",
+                                    "Carrito",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Error al actualizar el stock en la base de datos.",
+                                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show($"No se pueden agregar más unidades del producto '{nombreImagen}'.\n" +
+                                $"Stock disponible: {producto.Stock}, ya tienes: {cantidadEnCarrito1}.",
+                                "Límite alcanzado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show($"El producto '{nombreImagen}' no se encuentra en la base de datos.",
+                            "Producto no encontrado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+
+                    adminProd.Disconnect(); // Cerrar conexión
                 }
                 else
                 {
-                    MessageBox.Show("El TextBox está vacío. No se puede agregar al carrito.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("El TextBox está vacío. No se puede agregar al carrito.",
+                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al agregar al carrito: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error al agregar al carrito: " + ex.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
+
+
 
         private void button2_Click(object sender, EventArgs e)
         {
