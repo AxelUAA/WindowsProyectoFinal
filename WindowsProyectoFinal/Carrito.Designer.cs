@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBoxLogin = new System.Windows.Forms.GroupBox();
+            this.button3 = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.button2 = new System.Windows.Forms.Button();
@@ -36,7 +37,6 @@
             this.panelOpcPago = new System.Windows.Forms.Panel();
             this.btnPagoOxxo = new System.Windows.Forms.Button();
             this.btnPagoTarjeta = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.groupBoxLogin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panelOpcPago.SuspendLayout();
@@ -59,6 +59,20 @@
             this.groupBoxLogin.TabStop = false;
             this.groupBoxLogin.Text = "Carrito de compras";
             this.groupBoxLogin.Enter += new System.EventHandler(this.groupBoxLogin_Enter);
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.SystemColors.ControlText;
+            this.button3.Font = new System.Drawing.Font("Segoe UI Black", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.button3.Location = new System.Drawing.Point(355, 127);
+            this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(209, 56);
+            this.button3.TabIndex = 25;
+            this.button3.Text = "Actualizar Carro";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // richTextBox1
             // 
@@ -132,6 +146,7 @@
             this.btnPagoOxxo.TabIndex = 26;
             this.btnPagoOxxo.Text = "Pagar en OXXO";
             this.btnPagoOxxo.UseVisualStyleBackColor = false;
+            this.btnPagoOxxo.Click += new System.EventHandler(this.btnPagoOxxo_Click);
             // 
             // btnPagoTarjeta
             // 
@@ -147,20 +162,6 @@
             this.btnPagoTarjeta.Text = "Pago con tarjeta";
             this.btnPagoTarjeta.UseVisualStyleBackColor = false;
             this.btnPagoTarjeta.Click += new System.EventHandler(this.btnPagoTarjeta_Click);
-            // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.SystemColors.ControlText;
-            this.button3.Font = new System.Drawing.Font("Segoe UI Black", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.button3.Location = new System.Drawing.Point(355, 127);
-            this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(209, 56);
-            this.button3.TabIndex = 25;
-            this.button3.Text = "Actualizar Carro";
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // Carrito
             // 
