@@ -98,6 +98,17 @@ namespace WindowsProyectoFinal
                     using (MySqlConnection conn = new MySqlConnection("Server=localhost;Database=proyecto;Uid=root;Pwd=;"))
                     {
                         conn.Open();
+                        string countQuery = "SELECT COUNT(*) FROM productos";
+                        using (MySqlCommand countCmd = new MySqlCommand(countQuery, conn))
+                        {
+                            int totalProductos = Convert.ToInt32(countCmd.ExecuteScalar());
+
+                            if (totalProductos <= 6)
+                            {
+                                MessageBox.Show("No puedes eliminar este producto. Deben permanecer al menos 6 productos .");
+                                return;
+                            }
+                        }
 
                         string query = "DELETE FROM productos WHERE id = @id";
                         using (MySqlCommand cmd = new MySqlCommand(query, conn))

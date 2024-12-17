@@ -174,7 +174,6 @@ namespace WindowsProyectoFinal
 
                             using (MySqlCommand cmd = new MySqlCommand(query, connection))
                             {
-                                // Parámetros del producto
                                 cmd.Parameters.AddWithValue("@id", Convert.ToInt32(txtId.Text));
                                 cmd.Parameters.AddWithValue("@descripcion", txtDescripcion.Text);
                                 cmd.Parameters.AddWithValue("@precio", Convert.ToDecimal(txtPrecio.Text));
@@ -208,7 +207,6 @@ namespace WindowsProyectoFinal
             }
         }
 
-        // Validar que todos los campos estén llenos
         private bool ValidarCampos()
         {
             if (string.IsNullOrEmpty(txtId.Text) ||
