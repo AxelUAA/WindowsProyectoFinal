@@ -1,6 +1,6 @@
 ﻿namespace WindowsProyectoFinal
 {
-    partial class Stock
+    partial class StockInvitado
     {
         /// <summary>
         /// Required designer variable.

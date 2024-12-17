@@ -17,7 +17,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 namespace WindowsProyectoFinal
 {
 
-    public partial class Stock : Form
+    public partial class StockInvitado : Form
     {
         //vars
         private string name;
@@ -35,7 +35,7 @@ namespace WindowsProyectoFinal
         };
 
         private int currentUserId;
-        public Stock(int userId, string nombre)
+        public StockInvitado(int userId, string nombre)
         {
             InitializeComponent();
             this.name = nombre;
