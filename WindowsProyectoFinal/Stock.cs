@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -50,10 +51,13 @@ namespace WindowsProyectoFinal
                 AdminProd obj = new AdminProd();
 
                 // Obtener todos los nombres de imagen
-                List<string> nombresImagen = obj.ConsultaNombresImagen();
+                List<string> nombresImagen = obj.ConsultaNombresImagen(); // Nombres o rutas de las imágenes
 
                 // Array o lista de TextBoxes donde se mostrarán los datos
-                TextBox[] textBoxes = { textBox1, textBox2, textBox3, textBox4, textBox5, textBox6, textBox7, textBox8, textBox9, textBox10 }; // Asegúrate de agregar tus TextBoxes aquí.
+                TextBox[] textBoxes = { textBox1, textBox2, textBox3, textBox4, textBox5, textBox6, textBox7, textBox8, textBox9, textBox10 }; // Ajustar según corresponda
+
+                // Array o lista de PictureBox para las imágenes
+                PictureBox[] pictureBoxes = { pictureBox3, pictureBox4, pictureBox5, pictureBox6, pictureBox7, pictureBox8, pictureBox9, pictureBox10, pictureBox11, pictureBox12 }; // Ajustar según corresponda
 
                 // Iterar sobre los resultados y los TextBoxes
                 for (int i = 0; i < textBoxes.Length; i++)
@@ -61,26 +65,41 @@ namespace WindowsProyectoFinal
                     if (i < nombresImagen.Count) // Asegurarse de que hay datos para llenar
                     {
                         textBoxes[i].Text = nombresImagen[i];
+                        textBoxes[i].ReadOnly = true; // Hacer los TextBox de solo lectura
+
+                        // Cargar imagen en el PictureBox correspondiente
+                        string rutaImagen = Path.Combine(Application.StartupPath, "Recursos", nombresImagen[i] + ".png"); // Cambia la extensión según corresponda
+
+                        if (File.Exists(rutaImagen))
+                        {
+                            pictureBoxes[i].Image = Image.FromFile(rutaImagen);
+                        }
+                        else
+                        {
+                            pictureBoxes[i].Image = Properties.Resources.soldout; // Imagen predeterminada
+                        }
+
+                        pictureBoxes[i].SizeMode = PictureBoxSizeMode.Zoom; // Ajuste proporcional
                     }
                     else
                     {
                         textBoxes[i].Text = ""; // Vaciar los TextBoxes que no se usen
+                        pictureBoxes[i].Image = null; // Limpiar el PictureBox
                     }
                 }
 
-                // Carga imágenes en los botones
-                CargarImagenesEnBotones();
-
                 // Mostrar mensaje de confirmación
-                MessageBox.Show("Datos cargados correctamente.");
+                MessageBox.Show("Datos e imágenes cargados correctamente.");
                 obj.Disconnect();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al cargar datos: " + ex.Message);
+                MessageBox.Show("Error al cargar datos o imágenes: " + ex.Message);
             }
         }
 
+
+        /*
         private void AsignarImagenABoton(Button boton, Image imagen)
         {
             boton.Image = imagen; // Asigna la imagen al botón
@@ -106,7 +125,7 @@ namespace WindowsProyectoFinal
             {
                 AsignarImagenABoton(par.Key, par.Value);
             }
-        }
+        }*/
 
         private void OpcAdmin_Click(object sender, EventArgs e)
         {
@@ -145,6 +164,18 @@ namespace WindowsProyectoFinal
         private void textBoxNombre_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonCarro_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Carrito carrito = new Carrito();
+            carrito.ShowDialog();
         }
     }
     
