@@ -40,7 +40,8 @@ namespace WindowsProyectoFinal
 
         private void btnGraficos_Click(object sender, EventArgs e)
         {
-
+            GraficosVentas graficosVentas = new GraficosVentas();
+            graficosVentas.ShowDialog(this);
         }
 
         private void button1_Click(object sender, EventArgs e)
