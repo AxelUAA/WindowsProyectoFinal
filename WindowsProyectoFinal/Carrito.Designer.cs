@@ -33,8 +33,12 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.panelOpcPago = new System.Windows.Forms.Panel();
+            this.btnPagoTarjeta = new System.Windows.Forms.Button();
+            this.btnPagoOxxo = new System.Windows.Forms.Button();
             this.groupBoxLogin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.panelOpcPago.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBoxLogin
@@ -98,18 +102,57 @@
             this.button1.Location = new System.Drawing.Point(895, 663);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(153, 87);
+            this.button1.Size = new System.Drawing.Size(175, 87);
             this.button1.TabIndex = 23;
             this.button1.Text = "Pagar";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // panelOpcPago
+            // 
+            this.panelOpcPago.Controls.Add(this.btnPagoOxxo);
+            this.panelOpcPago.Controls.Add(this.btnPagoTarjeta);
+            this.panelOpcPago.Location = new System.Drawing.Point(895, 745);
+            this.panelOpcPago.Name = "panelOpcPago";
+            this.panelOpcPago.Size = new System.Drawing.Size(175, 100);
+            this.panelOpcPago.TabIndex = 24;
+            // 
+            // btnPagoTarjeta
+            // 
+            this.btnPagoTarjeta.BackColor = System.Drawing.Color.Black;
+            this.btnPagoTarjeta.FlatAppearance.BorderSize = 0;
+            this.btnPagoTarjeta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPagoTarjeta.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPagoTarjeta.ForeColor = System.Drawing.Color.White;
+            this.btnPagoTarjeta.Location = new System.Drawing.Point(0, 3);
+            this.btnPagoTarjeta.Name = "btnPagoTarjeta";
+            this.btnPagoTarjeta.Size = new System.Drawing.Size(175, 50);
+            this.btnPagoTarjeta.TabIndex = 25;
+            this.btnPagoTarjeta.Text = "Pago con tarjeta";
+            this.btnPagoTarjeta.UseVisualStyleBackColor = false;
+            this.btnPagoTarjeta.Click += new System.EventHandler(this.btnPagoTarjeta_Click);
+            // 
+            // btnPagoOxxo
+            // 
+            this.btnPagoOxxo.BackColor = System.Drawing.Color.Black;
+            this.btnPagoOxxo.FlatAppearance.BorderSize = 0;
+            this.btnPagoOxxo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPagoOxxo.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPagoOxxo.ForeColor = System.Drawing.Color.White;
+            this.btnPagoOxxo.Location = new System.Drawing.Point(0, 52);
+            this.btnPagoOxxo.Name = "btnPagoOxxo";
+            this.btnPagoOxxo.Size = new System.Drawing.Size(175, 48);
+            this.btnPagoOxxo.TabIndex = 26;
+            this.btnPagoOxxo.Text = "Pagar en OXXO";
+            this.btnPagoOxxo.UseVisualStyleBackColor = false;
             // 
             // Carrito
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::WindowsProyectoFinal.Properties.Resources.FONDO;
-            this.ClientSize = new System.Drawing.Size(1172, 774);
+            this.ClientSize = new System.Drawing.Size(1172, 925);
+            this.Controls.Add(this.panelOpcPago);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.groupBoxLogin);
@@ -117,6 +160,7 @@
             this.Text = "Carrito";
             this.groupBoxLogin.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.panelOpcPago.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -128,5 +172,8 @@
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Panel panelOpcPago;
+        private System.Windows.Forms.Button btnPagoTarjeta;
+        private System.Windows.Forms.Button btnPagoOxxo;
     }
 }
