@@ -191,6 +191,12 @@
       <DependentUpon>Stock.cs</DependentUpon>
     </Compile>
     <Compile Include="Productos.cs" />
+    <Compile Include="StockInvitado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StockInvitado.Designer.cs">
+      <DependentUpon>StockInvitado.cs</DependentUpon>
+    </Compile>
     <Compile Include="Usuarios.cs" />
     <EmbeddedResource Include="AgregarProducto.resx">
       <DependentUpon>AgregarProducto.cs</DependentUpon>
@@ -229,6 +235,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Stock.resx">
       <DependentUpon>Stock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StockInvitado.resx">
+      <DependentUpon>StockInvitado.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
