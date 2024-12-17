@@ -41,13 +41,13 @@
             this.labeluser = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.txtBoxContra = new System.Windows.Forms.TextBox();
+            this.txtBoxUsuario = new System.Windows.Forms.TextBox();
             this.bSalirLogin = new System.Windows.Forms.Button();
             this.bRegreLogin = new System.Windows.Forms.Button();
             this.labelSlogan = new System.Windows.Forms.Label();
             this.panLogin2 = new System.Windows.Forms.FlowLayoutPanel();
             this.labelEslogan = new System.Windows.Forms.Label();
             this.btnIngresar = new System.Windows.Forms.Button();
-            this.txtBoxUsuario = new System.Windows.Forms.TextBox();
             this.panLogin1.SuspendLayout();
             this.panelUsuarios.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -106,6 +106,7 @@
             this.radioUsuario.TabStop = true;
             this.radioUsuario.Text = "USUARIO";
             this.radioUsuario.UseVisualStyleBackColor = true;
+            this.radioUsuario.CheckedChanged += new System.EventHandler(this.radioUsuario_CheckedChanged);
             // 
             // radioAdmin
             // 
@@ -120,6 +121,7 @@
             this.radioAdmin.TabStop = true;
             this.radioAdmin.Text = "ADMINISTRADOR";
             this.radioAdmin.UseVisualStyleBackColor = true;
+            this.radioAdmin.CheckedChanged += new System.EventHandler(this.radioAdmin_CheckedChanged);
             // 
             // btnUsuarios
             // 
@@ -208,6 +210,21 @@
             this.txtBoxContra.Enter += new System.EventHandler(this.txtBoxContra_Enter);
             this.txtBoxContra.Leave += new System.EventHandler(this.txtBoxContra_Leave);
             // 
+            // txtBoxUsuario
+            // 
+            this.txtBoxUsuario.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.txtBoxUsuario.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtBoxUsuario.Font = new System.Drawing.Font("Segoe UI Light", 13.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBoxUsuario.ForeColor = System.Drawing.Color.White;
+            this.txtBoxUsuario.Location = new System.Drawing.Point(191, 192);
+            this.txtBoxUsuario.Name = "txtBoxUsuario";
+            this.txtBoxUsuario.Size = new System.Drawing.Size(489, 31);
+            this.txtBoxUsuario.TabIndex = 0;
+            this.txtBoxUsuario.Text = "USUARIO";
+            this.txtBoxUsuario.TextChanged += new System.EventHandler(this.txtBoxUsuario_TextChanged);
+            this.txtBoxUsuario.Enter += new System.EventHandler(this.txtBoxUsuario_Enter);
+            this.txtBoxUsuario.Leave += new System.EventHandler(this.txtBoxUsuario_Leave);
+            // 
             // bSalirLogin
             // 
             this.bSalirLogin.Font = new System.Drawing.Font("Segoe UI", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -284,21 +301,6 @@
             this.btnIngresar.Click += new System.EventHandler(this.btnIngresar_Click);
             this.btnIngresar.MouseEnter += new System.EventHandler(this.btnIngresar_MouseEnter);
             this.btnIngresar.MouseLeave += new System.EventHandler(this.btnIngresar_MouseLeave);
-            // 
-            // txtBoxUsuario
-            // 
-            this.txtBoxUsuario.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.txtBoxUsuario.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtBoxUsuario.Font = new System.Drawing.Font("Segoe UI Light", 13.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBoxUsuario.ForeColor = System.Drawing.Color.White;
-            this.txtBoxUsuario.Location = new System.Drawing.Point(191, 192);
-            this.txtBoxUsuario.Name = "txtBoxUsuario";
-            this.txtBoxUsuario.Size = new System.Drawing.Size(489, 31);
-            this.txtBoxUsuario.TabIndex = 0;
-            this.txtBoxUsuario.Text = "USUARIO";
-            this.txtBoxUsuario.TextChanged += new System.EventHandler(this.txtBoxUsuario_TextChanged);
-            this.txtBoxUsuario.Enter += new System.EventHandler(this.txtBoxUsuario_Enter);
-            this.txtBoxUsuario.Leave += new System.EventHandler(this.txtBoxUsuario_Leave);
             // 
             // Login
             // 
