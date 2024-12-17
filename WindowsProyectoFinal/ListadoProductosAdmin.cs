@@ -14,7 +14,6 @@ namespace WindowsProyectoFinal
 {
     public partial class ListadoProductosAdmin : Form
     {
-
         string cadenaConexion = "Server=localhost;Database=proyecto;Uid=root;Pwd=;";
 
         public ListadoProductosAdmin()
@@ -22,16 +21,13 @@ namespace WindowsProyectoFinal
             InitializeComponent();
         }
 
-      
-
         private void ListadoProductosAdmin_Load(object sender, EventArgs e)
         {
-            CargarProductos(); 
+            CargarProductos();
         }
 
         private void CargarProductos()
         {
-            
             panelProductos.Controls.Clear();
             panelProductos.AutoScroll = true;
 
@@ -40,7 +36,7 @@ namespace WindowsProyectoFinal
                 using (MySqlConnection conn = new MySqlConnection(cadenaConexion))
                 {
                     conn.Open();
-                    string query = "SELECT nombreimagen, precio FROM productos"; 
+                    string query = "SELECT nombreimagen, precio, stock FROM productos ORDER BY stock ASC";
                     using (MySqlCommand cmd = new MySqlCommand(query, conn))
                     {
                         using (MySqlDataReader reader = cmd.ExecuteReader())
@@ -50,7 +46,7 @@ namespace WindowsProyectoFinal
                             {
                                 Panel productoPanel = new Panel
                                 {
-                                    Size = new Size(500, 70),
+                                    Size = new Size(500, 90),
                                     Location = new Point(10, y),
                                     BackColor = Color.Black,
                                     BorderStyle = BorderStyle.None
@@ -74,24 +70,31 @@ namespace WindowsProyectoFinal
                                     Font = new Font("Arial", 10, FontStyle.Bold)
                                 };
 
-                                
+                                Label lblStock = new Label
+                                {
+                                    Text = $"Stock: {reader["stock"]}",
+                                    Location = new Point(20, 50),
+                                    AutoSize = true,
+                                    ForeColor = Color.White,
+                                    Font = new Font("Arial", 10, FontStyle.Bold)
+                                };
+
                                 Panel separator = new Panel
                                 {
                                     Size = new Size(480, 1),
-                                    Location = new Point(10, 68),
+                                    Location = new Point(10, 88),
                                     BackColor = Color.White
                                 };
 
                                 productoPanel.Controls.Add(lblNombre);
                                 productoPanel.Controls.Add(lblPrecio);
+                                productoPanel.Controls.Add(lblStock);
                                 productoPanel.Controls.Add(separator);
 
-                                
                                 panelProductos.Controls.Add(productoPanel);
 
-                                y += 80; 
+                                y += 100;
                             }
-
                         }
                     }
                 }
@@ -102,5 +105,5 @@ namespace WindowsProyectoFinal
             }
         }
     }
-    
 }
+
