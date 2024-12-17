@@ -22,13 +22,10 @@ namespace WindowsProyectoFinal
         public Carrito()
         {
             InitializeComponent();
-            DisenoBoton();
+            
             ActualizarCarrito();
         }
-        void DisenoBoton()
-        {
-            panelOpcPago.Visible = false;
-        }
+      
         private void groupBoxLogin_Enter(object sender, EventArgs e)
         {
 
@@ -43,7 +40,9 @@ namespace WindowsProyectoFinal
 
         private void button1_Click(object sender, EventArgs e)
         {
-            panelOpcPago.Visible=true;
+            this.Hide();
+            InfoCompra info = new InfoCompra();
+            info.ShowDialog();
         }
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
@@ -51,13 +50,7 @@ namespace WindowsProyectoFinal
 
         }
 
-        private void btnPagoTarjeta_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            Compra compra = new Compra();
-            compra.ShowDialog();
-        }
-
+      
         private void ActualizarCarrito()
         {
             richTextBox1.Clear();
