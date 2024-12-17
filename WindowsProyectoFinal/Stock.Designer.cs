@@ -467,7 +467,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pictureBox1.Image = global::WindowsProyectoFinal.Properties.Resources.Logo2;
+            this.pictureBox1.Image = global::WindowsProyectoFinal.Properties.Resources._77_shop;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBox1.Name = "pictureBox1";
