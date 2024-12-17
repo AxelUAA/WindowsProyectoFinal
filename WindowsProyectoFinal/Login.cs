@@ -167,26 +167,78 @@ namespace WindowsProyectoFinal
 
             string cuenta = txtBoxUsuario.Text;
             string password = txtBoxContra.Text;
+            string tipoUsuarioSeleccionado;
 
             AdminLogin adminLogin = new AdminLogin();
 
+            // Validar campos
             if (adminLogin.ValidarCampos(cuenta, password))
             {
-                if (adminLogin.ValidarUsuario(cuenta, password))
+                // Validar tipo de usuario (Admin, Usuario o Invitado)
+                if (adminLogin.ValidarTipoUsuario(radioAdmin, radioUsuario, radioInvitado, out tipoUsuarioSeleccionado))
                 {
-                    // Obtenemos el nombre del usuario desde la propiedad
-                    nombre = adminLogin.name;
-                    MessageBox.Show("Inicio de sesión exitoso.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Hide();
-                    Stock Stock = new Stock(userId, nombre);
-                    Stock.ShowDialog();
-                }
-                else
-                {
-                    MessageBox.Show("Credenciales incorrectas.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    // Validar credenciales en la base de datos
+                    if (adminLogin.ValidarUsuario(cuenta, password))
+                    {
+                        // Verificar que el tipo de usuario coincida
+                        if ((tipoUsuarioSeleccionado == "Administrador" && radioAdmin.Checked) ||
+                            (tipoUsuarioSeleccionado == "Usuario" && radioUsuario.Checked) ||
+                            (tipoUsuarioSeleccionado == "Invitado" && radioInvitado.Checked))
+                        {
+                            // Redireccionar según el tipo de usuario
+                            this.Hide();
+                            if (tipoUsuarioSeleccionado == "Administrador")
+                            {
+                                if (cuenta == "admin")
+                                {
+                                    MessageBox.Show($"Inicio de sesión exitoso como {tipoUsuarioSeleccionado}.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    //form de admin
+                                    this.Hide();
+                                    OpcionesAdmin opcionesAdmin = new OpcionesAdmin();
+                                    opcionesAdmin.ShowDialog();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("No eres administrador!!!.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+
+                            }
+                            else if (tipoUsuarioSeleccionado == "Usuario")
+                            {
+                                MessageBox.Show($"Inicio de sesión exitoso como {tipoUsuarioSeleccionado}.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                //form del usuario
+                                // Obtenemos el nombre del usuario desde la propiedad
+                                nombre = adminLogin.name;
+                                Stock Stock = new Stock(userId, nombre);
+                                Stock.ShowDialog();
+
+                            }
+                            else if (tipoUsuarioSeleccionado == "Invitado")
+                            {
+                                MessageBox.Show($"Inicio de sesión exitoso como {tipoUsuarioSeleccionado}.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                // Obtenemos el nombre del usuario desde la propiedad
+                                nombre = adminLogin.name;
+                                Stock Stock = new Stock(userId, nombre);
+                                Stock.ShowDialog();
+                            }
+
+                            this.Show();
+                        }
+                        else
+                        {
+                            MessageBox.Show("El tipo de usuario seleccionado no coincide con la cuenta ingresada.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    else
+                    {
+                        // Si no se validan las credenciales
+                        MessageBox.Show("Usuario o contraseña incorrectos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
         }
+
+
 
         private void btnIngresar_MouseEnter(object sender, EventArgs e)
         {
@@ -203,6 +255,16 @@ namespace WindowsProyectoFinal
         private void btnUsuarios_Click(object sender, EventArgs e)
         {
             MostrarMenu(panelUsuarios);
+        }
+
+        private void radioAdmin_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radioUsuario_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -98,7 +98,7 @@ namespace WindowsProyectoFinal
             {
                 connection = new MySqlConnection(cadena);
                 connection.Open();
-                MessageBox.Show("Conexión establecida exitosamente.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //MessageBox.Show("Conexión establecida exitosamente.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
