@@ -9,12 +9,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using Microsoft.VisualBasic.ApplicationServices;
 
 namespace WindowsProyectoFinal
 {
     public partial class AgregarProducto : Form
     {
-        private string rutaImagen = "";
+        private string rutaImagen;
         public AgregarProducto()
         {
             InitializeComponent();
@@ -22,27 +23,107 @@ namespace WindowsProyectoFinal
 
         private void AgregarProducto_Load(object sender, EventArgs e)
         {
+            SetPlaceholder(txtId, "Ingrese el ID del producto");
+            SetPlaceholder(txtNombreProdAgregar, "Nombre del Producto");
+            SetPlaceholder(txtDescripcion, "Descripcion del Producto");
+            SetPlaceholder(txtExistencias, "Stock (existencias)");
+            SetPlaceholder(txtPrecio, "Precio del Producto");
 
         }
 
+        private void txtId_Enter(object sender, EventArgs e)
+        {
+            RemovePlaceholder(txtId, "Ingrese el ID del producto");
+        }
+
+        private void txtId_Leave(object sender, EventArgs e)
+        {
+            SetPlaceholder(txtId, "Ingrese el ID del producto");
+        }
+
+        private void txtNombreProdAgregar_Enter(object sender, EventArgs e)
+        {
+            RemovePlaceholder(txtNombreProdAgregar, "Nombre del Producto");
+        }
+
+        private void txtNombreProdAgregar_Leave(object sender, EventArgs e)
+        {
+            SetPlaceholder(txtNombreProdAgregar, "Nombre del Producto");
+        }
+
+        private void txtDescripcion_Enter(object sender, EventArgs e)
+        {
+            RemovePlaceholder(txtDescripcion, "Descripcion del Producto");
+        }
+
+        private void txtDescripcion_Leave(object sender, EventArgs e)
+        {
+            SetPlaceholder(txtDescripcion, "Descripcion del Producto");
+        }
+
+        private void txtExistencias_Enter(object sender, EventArgs e)
+        {
+            RemovePlaceholder(txtExistencias, "Stock (existencias)");
+        }
+
+        private void txtExistencias_Leave(object sender, EventArgs e)
+        {
+            SetPlaceholder(txtExistencias, "Stock (existencias)");
+        }
+
+        private void txtPrecio_Enter(object sender, EventArgs e)
+        {
+            RemovePlaceholder(txtPrecio, "Precio del Producto");
+        }
+
+        private void txtPrecio_Leave(object sender, EventArgs e)
+        {
+            SetPlaceholder(txtPrecio, "Precio del Producto");
+        }
+
+        private void SetPlaceholder(TextBox textBox, string placeholderText)
+        {
+            if (string.IsNullOrWhiteSpace(textBox.Text))
+            {
+                textBox.Text = placeholderText;
+                textBox.ForeColor = Color.Gray; 
+            }
+        }
+        private void RemovePlaceholder(TextBox textBox, string placeholderText)
+        {
+            if (textBox.Text == placeholderText)
+            {
+                textBox.Text = "";
+                textBox.ForeColor = Color.White; 
+            }
+        }
         private void btnCargarImagen_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
                 openFileDialog.Title = "Seleccionar Imagen";
-                openFileDialog.Filter = "Archivos de Imagen|*.jpg;*.jpeg;*.png;*.bmp";
+                openFileDialog.Filter = "Archivos de Imagen(*.jpg;*.jpeg;*.png)|*.jpg;*.jpeg;*.png;*.bmp";
 
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     try
                     {
-                        // Mostrar la imagen en el PictureBox
-                        pictureBoxProducto.Image = new Bitmap(openFileDialog.FileName);
+                        rutaImagen =openFileDialog.FileName;
 
-                        // Guardar la ruta de la imagen
-                        rutaImagen = openFileDialog.FileName;
+                        string carpetaDestino = Path.Combine(Application.StartupPath, "Resources");
+                        if (!Directory.Exists(carpetaDestino))
+                        {
+                            Directory.CreateDirectory(carpetaDestino);
+                        }
 
-                        
+                        string destino = Path.Combine(Application.StartupPath, "Resources", Path.GetFileName(rutaImagen));
+                        File.Copy(rutaImagen, destino, true);
+
+                        MessageBox.Show("Imagen agregada correctamente.");
+
+                        pictureBoxProducto.ImageLocation = destino; ; 
+
+
                     }
                     catch (Exception ex)
                     {
@@ -51,34 +132,73 @@ namespace WindowsProyectoFinal
                 }
             }
         }
-
-        // Evento del botón para guardar el producto en la base de datos
         private void btnGuardarProducto_Click(object sender, EventArgs e)
         {
             if (ValidarCampos())
             {
                 try
                 {
-                    // Convertir la imagen a un arreglo de bytes (BLOB)
-                    byte[] imagenBytes = File.ReadAllBytes(rutaImagen);
+                    string carpetaDestino = Path.Combine(Application.StartupPath, "Resources");
+
+                    if (!Directory.Exists(carpetaDestino))
+                    {
+                        Directory.CreateDirectory(carpetaDestino);
+                    }
+
+                    string nombreImagen = Path.GetFileName(rutaImagen);
+                    string rutaDestino = Path.Combine(carpetaDestino, nombreImagen);
+
+                    if (!File.Exists(rutaDestino))
+                    {
+                        File.Copy(rutaImagen, rutaDestino, true);
+                    }
+
 
                     using (MySqlConnection connection = new MySqlConnection("Server=localhost; Database=proyecto; User=root; Password=; SslMode=none;"))
                     {
                         connection.Open();
-                        string query = "INSERT INTO productos (id, descripcion, precio, stock, nombreimagen) VALUES (@id, @descripcion, @precio, @stock, @nombreimagen)";
 
-                        using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                        string countQuery = "SELECT COUNT(*) FROM productos";
+                        using (MySqlCommand countCmd = new MySqlCommand(countQuery, connection))
                         {
-                            // Parámetros del producto
-                            cmd.Parameters.AddWithValue("@id", Convert.ToInt32(txtId.Text));
-                            cmd.Parameters.AddWithValue("@descripcion", txtDescripcion.Text);
-                            cmd.Parameters.AddWithValue("@precio", Convert.ToDecimal(txtPrecio.Text));
-                            cmd.Parameters.AddWithValue("@stock", Convert.ToInt32(txtExistencias.Text));
-                            cmd.Parameters.AddWithValue("@nombreimagen", imagenBytes); // Insertar imagen como BLOB
+                            int totalProductos = Convert.ToInt32(countCmd.ExecuteScalar());
 
-                            cmd.ExecuteNonQuery();
+
+                            if (totalProductos >= 10)
+                            {
+                                MessageBox.Show("No se pueden agregar más de 10 productos.", "Límite alcanzado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                return;
+                            }
+                            string query = "INSERT INTO productos (id, descripcion, precio, stock, nombreimagen) VALUES (@id, @descripcion, @precio, @stock, @nombreimagen)";
+
+
+                            using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                            {
+                                // Parámetros del producto
+                                cmd.Parameters.AddWithValue("@id", Convert.ToInt32(txtId.Text));
+                                cmd.Parameters.AddWithValue("@descripcion", txtDescripcion.Text);
+                                cmd.Parameters.AddWithValue("@precio", Convert.ToDecimal(txtPrecio.Text));
+                                cmd.Parameters.AddWithValue("@stock", Convert.ToInt32(txtExistencias.Text));
+                                cmd.Parameters.AddWithValue("@nombreimagen", txtNombreProdAgregar.Text); 
+
+                                cmd.ExecuteNonQuery();
+                            }
+                            MessageBox.Show("Producto agregado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            txtId.Clear();
+                            txtNombreProdAgregar.Clear();
+                            txtDescripcion.Clear();
+                            txtPrecio.Clear();
+                            txtExistencias.Clear();
+                            pictureBoxProducto.Image= null;
+
+
+                            SetPlaceholder(txtId, "Ingrese el ID del producto");
+                            SetPlaceholder(txtNombreProdAgregar, "Nombre del Producto");
+                            SetPlaceholder(txtDescripcion, "Descripcion del Producto");
+                            SetPlaceholder(txtExistencias, "Stock (existencias)");
+                            SetPlaceholder(txtPrecio, "Precio del Producto");
                         }
-                        MessageBox.Show("Producto agregado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
                 catch (Exception ex)
@@ -112,14 +232,21 @@ namespace WindowsProyectoFinal
 
             if (result == DialogResult.Yes)
             {
-                // Limpiar TextBox
+             
                 txtId.Clear();
+                txtNombreProdAgregar.Clear();
                 txtDescripcion.Clear();
                 txtPrecio.Clear();
                 txtExistencias.Clear();
+                
 
 
-                // Limpiar PictureBox
+                SetPlaceholder(txtId, "Ingrese el ID del producto");
+                SetPlaceholder(txtNombreProdAgregar, "Nombre del Producto");
+                SetPlaceholder(txtDescripcion, "Descripcion del Producto");
+                SetPlaceholder(txtExistencias, "Stock (existencias)");
+                SetPlaceholder(txtPrecio, "Precio del Producto");
+
                 pictureBoxProducto.Image = null;
             }
         }

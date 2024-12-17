@@ -40,6 +40,7 @@
             this.btnGuardarProducto = new System.Windows.Forms.Button();
             this.btnCanAgregar = new System.Windows.Forms.Button();
             this.btnSalirDeAgregar = new System.Windows.Forms.Button();
+            this.txtNombreProdAgregar = new System.Windows.Forms.TextBox();
             this.panel1AggPro.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProducto)).BeginInit();
@@ -51,16 +52,16 @@
             this.panel1AggPro.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1AggPro.Location = new System.Drawing.Point(0, 0);
             this.panel1AggPro.Name = "panel1AggPro";
-            this.panel1AggPro.Size = new System.Drawing.Size(176, 860);
+            this.panel1AggPro.Size = new System.Drawing.Size(207, 860);
             this.panel1AggPro.TabIndex = 0;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pictureBox1.Image = global::WindowsProyectoFinal.Properties.Resources.Logo2;
+            this.pictureBox1.Image = global::WindowsProyectoFinal.Properties.Resources._77_shop;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(176, 155);
+            this.pictureBox1.Size = new System.Drawing.Size(207, 191);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -68,43 +69,46 @@
             // panel1
             // 
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(176, 0);
+            this.panel1.Location = new System.Drawing.Point(207, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1209, 132);
+            this.panel1.Size = new System.Drawing.Size(1178, 132);
             this.panel1.TabIndex = 1;
             // 
             // txtId
             // 
             this.txtId.BackColor = System.Drawing.SystemColors.MenuText;
             this.txtId.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtId.ForeColor = System.Drawing.SystemColors.InactiveBorder;
+            this.txtId.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.txtId.Location = new System.Drawing.Point(425, 214);
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(304, 30);
             this.txtId.TabIndex = 2;
-            this.txtId.Text = "ID";
+            this.txtId.Enter += new System.EventHandler(this.txtId_Enter);
+            this.txtId.Leave += new System.EventHandler(this.txtId_Leave);
             // 
             // txtDescripcion
             // 
             this.txtDescripcion.BackColor = System.Drawing.SystemColors.MenuText;
             this.txtDescripcion.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDescripcion.ForeColor = System.Drawing.SystemColors.InactiveBorder;
-            this.txtDescripcion.Location = new System.Drawing.Point(425, 276);
+            this.txtDescripcion.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.txtDescripcion.Location = new System.Drawing.Point(425, 341);
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(304, 30);
             this.txtDescripcion.TabIndex = 3;
-            this.txtDescripcion.Text = "Descripcion";
+            this.txtDescripcion.Enter += new System.EventHandler(this.txtDescripcion_Enter);
+            this.txtDescripcion.Leave += new System.EventHandler(this.txtDescripcion_Leave);
             // 
             // txtPrecio
             // 
             this.txtPrecio.BackColor = System.Drawing.SystemColors.MenuText;
             this.txtPrecio.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPrecio.ForeColor = System.Drawing.SystemColors.InactiveBorder;
-            this.txtPrecio.Location = new System.Drawing.Point(425, 345);
+            this.txtPrecio.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.txtPrecio.Location = new System.Drawing.Point(425, 404);
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(304, 30);
             this.txtPrecio.TabIndex = 4;
-            this.txtPrecio.Text = "Precio";
+            this.txtPrecio.Enter += new System.EventHandler(this.txtPrecio_Enter);
+            this.txtPrecio.Leave += new System.EventHandler(this.txtPrecio_Leave);
             // 
             // pictureBoxProducto
             // 
@@ -133,12 +137,13 @@
             // 
             this.txtExistencias.BackColor = System.Drawing.SystemColors.MenuText;
             this.txtExistencias.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtExistencias.ForeColor = System.Drawing.SystemColors.InactiveBorder;
-            this.txtExistencias.Location = new System.Drawing.Point(425, 421);
+            this.txtExistencias.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.txtExistencias.Location = new System.Drawing.Point(425, 469);
             this.txtExistencias.Name = "txtExistencias";
             this.txtExistencias.Size = new System.Drawing.Size(304, 30);
             this.txtExistencias.TabIndex = 7;
-            this.txtExistencias.Text = "Existencias";
+            this.txtExistencias.Enter += new System.EventHandler(this.txtExistencias_Enter);
+            this.txtExistencias.Leave += new System.EventHandler(this.txtExistencias_Leave);
             // 
             // btnGuardarProducto
             // 
@@ -179,13 +184,26 @@
             this.btnSalirDeAgregar.UseVisualStyleBackColor = false;
             this.btnSalirDeAgregar.Click += new System.EventHandler(this.btnSalirDeAgregar_Click);
             // 
+            // txtNombreProdAgregar
+            // 
+            this.txtNombreProdAgregar.BackColor = System.Drawing.SystemColors.MenuText;
+            this.txtNombreProdAgregar.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNombreProdAgregar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.txtNombreProdAgregar.Location = new System.Drawing.Point(425, 280);
+            this.txtNombreProdAgregar.Name = "txtNombreProdAgregar";
+            this.txtNombreProdAgregar.Size = new System.Drawing.Size(304, 30);
+            this.txtNombreProdAgregar.TabIndex = 11;
+            this.txtNombreProdAgregar.Enter += new System.EventHandler(this.txtNombreProdAgregar_Enter);
+            this.txtNombreProdAgregar.Leave += new System.EventHandler(this.txtNombreProdAgregar_Leave);
+            // 
             // AgregarProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.BackgroundImage = global::WindowsProyectoFinal.Properties.Resources.Fondo5;
+            this.BackgroundImage = global::WindowsProyectoFinal.Properties.Resources.FONDO;
             this.ClientSize = new System.Drawing.Size(1385, 860);
+            this.Controls.Add(this.txtNombreProdAgregar);
             this.Controls.Add(this.btnSalirDeAgregar);
             this.Controls.Add(this.btnCanAgregar);
             this.Controls.Add(this.btnGuardarProducto);
@@ -222,5 +240,6 @@
         private System.Windows.Forms.Button btnGuardarProducto;
         private System.Windows.Forms.Button btnCanAgregar;
         private System.Windows.Forms.Button btnSalirDeAgregar;
+        private System.Windows.Forms.TextBox txtNombreProdAgregar;
     }
 }
