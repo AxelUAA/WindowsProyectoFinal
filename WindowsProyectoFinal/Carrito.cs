@@ -23,6 +23,7 @@ namespace WindowsProyectoFinal
         {
             InitializeComponent();
             DisenoBoton();
+            ActualizarCarrito();
         }
         void DisenoBoton()
         {
@@ -90,6 +91,41 @@ namespace WindowsProyectoFinal
             {
                 MessageBox.Show("Error al agregar al carrito: " + ex.Message,
                                 "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonEliminar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Obtén el nombre del producto a eliminar
+                string nombreAEliminar = textBoxEliminar.Text; // TextBox donde el usuario escribe el nombre del producto
+
+                // Buscar y eliminar el producto del carrito
+                Productos productoAEliminar = CarritoGlobal.carrito.FirstOrDefault(p => p.Nombreimagen == nombreAEliminar);
+
+                if (productoAEliminar != null)
+                {
+                    CarritoGlobal.carrito.Remove(productoAEliminar);
+
+                    // Actualizar el RichTextBox
+                    ActualizarCarrito();
+
+                    MessageBox.Show($"Producto '{nombreAEliminar}' eliminado del carrito.", "Carrito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Producto no encontrado en el carrito.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al eliminar el producto: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

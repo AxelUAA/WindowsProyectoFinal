@@ -136,6 +136,7 @@
             this.button10.TabIndex = 29;
             this.button10.Text = "Agregar";
             this.button10.UseVisualStyleBackColor = false;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
             // button9
             // 
@@ -149,6 +150,7 @@
             this.button9.TabIndex = 28;
             this.button9.Text = "Agregar";
             this.button9.UseVisualStyleBackColor = false;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // button8
             // 
@@ -162,6 +164,7 @@
             this.button8.TabIndex = 27;
             this.button8.Text = "Agregar";
             this.button8.UseVisualStyleBackColor = false;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // button7
             // 
@@ -175,6 +178,7 @@
             this.button7.TabIndex = 26;
             this.button7.Text = "Agregar";
             this.button7.UseVisualStyleBackColor = false;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // button6
             // 
@@ -188,6 +192,7 @@
             this.button6.TabIndex = 25;
             this.button6.Text = "Agregar";
             this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // button5
             // 
@@ -201,6 +206,7 @@
             this.button5.TabIndex = 24;
             this.button5.Text = "Agregar";
             this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button4
             // 
@@ -214,6 +220,7 @@
             this.button4.TabIndex = 23;
             this.button4.Text = "Agregar";
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button3
             // 
@@ -227,6 +234,7 @@
             this.button3.TabIndex = 22;
             this.button3.Text = "Agregar";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
@@ -240,6 +248,7 @@
             this.button2.TabIndex = 21;
             this.button2.Text = "Agregar";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -479,12 +488,14 @@
             // 
             // textBoxNombre
             // 
+            this.textBoxNombre.BackColor = System.Drawing.SystemColors.WindowFrame;
             this.textBoxNombre.Enabled = false;
-            this.textBoxNombre.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxNombre.Location = new System.Drawing.Point(582, 160);
+            this.textBoxNombre.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxNombre.ForeColor = System.Drawing.SystemColors.Menu;
+            this.textBoxNombre.Location = new System.Drawing.Point(561, 160);
             this.textBoxNombre.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBoxNombre.Name = "textBoxNombre";
-            this.textBoxNombre.Size = new System.Drawing.Size(271, 29);
+            this.textBoxNombre.Size = new System.Drawing.Size(304, 29);
             this.textBoxNombre.TabIndex = 3;
             this.textBoxNombre.TextChanged += new System.EventHandler(this.textBoxNombre_TextChanged);
             // 

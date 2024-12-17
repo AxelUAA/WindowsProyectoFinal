@@ -51,28 +51,24 @@ namespace WindowsProyectoFinal
         {
             try
             {
-                // Crear instancia de la clase que realiza la consulta
                 AdminProd obj = new AdminProd();
 
-                // Obtener todos los nombres de imagen
-                List<string> nombresImagen = obj.ConsultaNombresImagen(); // Nombres o rutas de las imágenes
+                // Obtener los nombres de las imágenes
+                List<string> nombresImagen = obj.ConsultaNombresImagen();
 
-                // Array o lista de TextBoxes donde se mostrarán los datos
-                TextBox[] textBoxes = { textBox1, textBox2, textBox3, textBox4, textBox5, textBox6, textBox7, textBox8, textBox9, textBox10 }; // Ajustar según corresponda
+                // Arreglos de TextBox y PictureBox
+                TextBox[] textBoxes = { textBox1, textBox2, textBox3, textBox4, textBox5, textBox6, textBox7, textBox8, textBox9, textBox10 };
+                PictureBox[] pictureBoxes = { pictureBox3, pictureBox4, pictureBox5, pictureBox6, pictureBox7, pictureBox8, pictureBox9, pictureBox10, pictureBox11, pictureBox12 };
 
-                // Array o lista de PictureBox para las imágenes
-                PictureBox[] pictureBoxes = { pictureBox3, pictureBox4, pictureBox5, pictureBox6, pictureBox7, pictureBox8, pictureBox9, pictureBox10, pictureBox11, pictureBox12 }; // Ajustar según corresponda
-
-                // Iterar sobre los resultados y los TextBoxes
                 for (int i = 0; i < textBoxes.Length; i++)
                 {
-                    if (i < nombresImagen.Count) // Asegurarse de que hay datos para llenar
+                    if (i < nombresImagen.Count)
                     {
                         textBoxes[i].Text = nombresImagen[i];
-                        textBoxes[i].ReadOnly = true; // Hacer los TextBox de solo lectura
+                        textBoxes[i].ReadOnly = true;
 
-                        // Cargar imagen en el PictureBox correspondiente
-                        string rutaImagen = Path.Combine(Application.StartupPath, "Recursos", nombresImagen[i] + ".png"); // Cambia la extensión según corresponda
+                        // Crear ruta relativa a "Resources"
+                        string rutaImagen = Path.Combine(Application.StartupPath, "Resources", nombresImagen[i] + ".png");
 
                         if (File.Exists(rutaImagen))
                         {
@@ -83,16 +79,15 @@ namespace WindowsProyectoFinal
                             pictureBoxes[i].Image = Properties.Resources.soldout; // Imagen predeterminada
                         }
 
-                        pictureBoxes[i].SizeMode = PictureBoxSizeMode.Zoom; // Ajuste proporcional
+                        pictureBoxes[i].SizeMode = PictureBoxSizeMode.Zoom;
                     }
                     else
                     {
-                        textBoxes[i].Text = ""; // Vaciar los TextBoxes que no se usen
-                        pictureBoxes[i].Image = null; // Limpiar el PictureBox
+                        textBoxes[i].Text = "";
+                        pictureBoxes[i].Image = null;
                     }
                 }
 
-                // Mostrar mensaje de confirmación
                 MessageBox.Show("Datos e imágenes cargados correctamente.");
                 obj.Disconnect();
             }
@@ -101,6 +96,7 @@ namespace WindowsProyectoFinal
                 MessageBox.Show("Error al cargar datos o imágenes: " + ex.Message);
             }
         }
+
 
         private void OpcAdmin_Click(object sender, EventArgs e)
         {
@@ -157,19 +153,12 @@ namespace WindowsProyectoFinal
         {
             try
             {
-                // Obtén el nombre de la imagen del TextBox correspondiente
-                string nombreImagen = textBox1.Text; // TextBox1 corresponde al primer botón
-
+                string nombreImagen = textBox1.Text; 
                 if (!string.IsNullOrEmpty(nombreImagen))
                 {
-                    // Crea un producto con solo el nombre de la imagen (otros valores pueden ir como predeterminados)
                     Productos producto = new Productos(0, nombreImagen, "", 0, 0); // id=0, descripción="", precio=0, stock=0
-
-                    // Agregar el producto a la lista del carrito
                     CarritoGlobal.carrito.Add(producto);
 
-
-                    // Mensaje de confirmación
                     MessageBox.Show($"Producto '{nombreImagen}' agregado al carrito.", "Carrito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
@@ -183,6 +172,221 @@ namespace WindowsProyectoFinal
             }
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string nombreImagen = textBox2.Text;
+
+                if (!string.IsNullOrEmpty(nombreImagen))
+                {
+                    Productos producto = new Productos(0, nombreImagen, "", 0, 0);
+                    CarritoGlobal.carrito.Add(producto);
+
+                    MessageBox.Show($"Producto '{nombreImagen}' agregado al carrito.", "Carrito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("El TextBox está vacío. No se puede agregar al carrito.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al agregar al carrito: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string nombreImagen = textBox3.Text; 
+
+                if (!string.IsNullOrEmpty(nombreImagen))
+                {
+                    Productos producto = new Productos(0, nombreImagen, "", 0, 0);
+                    CarritoGlobal.carrito.Add(producto);
+
+                    MessageBox.Show($"Producto '{nombreImagen}' agregado al carrito.", "Carrito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("El TextBox está vacío. No se puede agregar al carrito.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al agregar al carrito: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string nombreImagen = textBox4.Text; 
+
+                if (!string.IsNullOrEmpty(nombreImagen))
+                {
+                    Productos producto = new Productos(0, nombreImagen, "", 0, 0);
+                    CarritoGlobal.carrito.Add(producto);
+
+                    MessageBox.Show($"Producto '{nombreImagen}' agregado al carrito.", "Carrito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("El TextBox está vacío. No se puede agregar al carrito.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al agregar al carrito: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string nombreImagen = textBox5.Text;
+
+                if (!string.IsNullOrEmpty(nombreImagen))
+                {
+                    Productos producto = new Productos(0, nombreImagen, "", 0, 0);
+                    CarritoGlobal.carrito.Add(producto);
+
+                    MessageBox.Show($"Producto '{nombreImagen}' agregado al carrito.", "Carrito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("El TextBox está vacío. No se puede agregar al carrito.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al agregar al carrito: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string nombreImagen = textBox6.Text;
+
+                if (!string.IsNullOrEmpty(nombreImagen))
+                {
+                    Productos producto = new Productos(0, nombreImagen, "", 0, 0);
+                    CarritoGlobal.carrito.Add(producto);
+
+                    MessageBox.Show($"Producto '{nombreImagen}' agregado al carrito.", "Carrito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("El TextBox está vacío. No se puede agregar al carrito.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al agregar al carrito: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string nombreImagen = textBox7.Text;
+
+                if (!string.IsNullOrEmpty(nombreImagen))
+                {
+                    Productos producto = new Productos(0, nombreImagen, "", 0, 0);
+                    CarritoGlobal.carrito.Add(producto);
+
+                    MessageBox.Show($"Producto '{nombreImagen}' agregado al carrito.", "Carrito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("El TextBox está vacío. No se puede agregar al carrito.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al agregar al carrito: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string nombreImagen = textBox8.Text;
+
+                if (!string.IsNullOrEmpty(nombreImagen))
+                {
+                    Productos producto = new Productos(0, nombreImagen, "", 0, 0);
+                    CarritoGlobal.carrito.Add(producto);
+
+                    MessageBox.Show($"Producto '{nombreImagen}' agregado al carrito.", "Carrito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("El TextBox está vacío. No se puede agregar al carrito.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al agregar al carrito: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string nombreImagen = textBox9.Text;
+
+                if (!string.IsNullOrEmpty(nombreImagen))
+                {
+                    Productos producto = new Productos(0, nombreImagen, "", 0, 0);
+                    CarritoGlobal.carrito.Add(producto);
+
+                    MessageBox.Show($"Producto '{nombreImagen}' agregado al carrito.", "Carrito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("El TextBox está vacío. No se puede agregar al carrito.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al agregar al carrito: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string nombreImagen = textBox10.Text;
+
+                if (!string.IsNullOrEmpty(nombreImagen))
+                {
+                    Productos producto = new Productos(0, nombreImagen, "", 0, 0);
+                    CarritoGlobal.carrito.Add(producto);
+
+                    MessageBox.Show($"Producto '{nombreImagen}' agregado al carrito.", "Carrito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("El TextBox está vacío. No se puede agregar al carrito.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al agregar al carrito: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 
 }
