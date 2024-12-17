@@ -13,9 +13,12 @@ namespace WindowsProyectoFinal
 {
     public partial class EliminarProducto : Form
     {
-        public EliminarProducto()
+        private string name;
+        public EliminarProducto(string name)
         {
             InitializeComponent();
+            this.name = name;
+            this.textBoxNombre.Text = this.name;
         }
 
         private void EliminarProducto_Load(object sender, EventArgs e)
@@ -143,5 +146,11 @@ namespace WindowsProyectoFinal
             }
         }
 
+        private void buttonRegresar_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Login loginForm = new Login();
+            loginForm.ShowDialog();
+        }
     }
 }

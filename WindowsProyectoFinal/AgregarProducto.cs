@@ -16,9 +16,12 @@ namespace WindowsProyectoFinal
     public partial class AgregarProducto : Form
     {
         private string rutaImagen;
-        public AgregarProducto()
+        private string name;
+        public AgregarProducto(string name)
         {
             InitializeComponent();
+            this.name = name;
+            this.textBoxNombre.Text = this.name;
         }
 
         private void AgregarProducto_Load(object sender, EventArgs e)
@@ -251,7 +254,9 @@ namespace WindowsProyectoFinal
 
         private void btnSalirDeAgregar_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            this.Hide();
+            Login loginForm = new Login();
+            loginForm.ShowDialog();
         }
     }
 }

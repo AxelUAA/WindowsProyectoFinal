@@ -32,6 +32,8 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panelProductos = new System.Windows.Forms.Panel();
+            this.textBoxNombre = new System.Windows.Forms.TextBox();
+            this.btnRegOAdmin = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -39,6 +41,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.panel1.Controls.Add(this.btnRegOAdmin);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -62,7 +65,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 28.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Location = new System.Drawing.Point(524, 37);
+            this.label1.Location = new System.Drawing.Point(533, 27);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(486, 62);
             this.label1.TabIndex = 1;
@@ -77,12 +80,38 @@
             this.panelProductos.Size = new System.Drawing.Size(730, 537);
             this.panelProductos.TabIndex = 2;
             // 
+            // textBoxNombre
+            // 
+            this.textBoxNombre.BackColor = System.Drawing.Color.Black;
+            this.textBoxNombre.Enabled = false;
+            this.textBoxNombre.Font = new System.Drawing.Font("Cooper Black", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxNombre.ForeColor = System.Drawing.Color.White;
+            this.textBoxNombre.Location = new System.Drawing.Point(229, 92);
+            this.textBoxNombre.Name = "textBoxNombre";
+            this.textBoxNombre.Size = new System.Drawing.Size(391, 38);
+            this.textBoxNombre.TabIndex = 14;
+            // 
+            // btnRegOAdmin
+            // 
+            this.btnRegOAdmin.BackColor = System.Drawing.SystemColors.ControlText;
+            this.btnRegOAdmin.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnRegOAdmin.Font = new System.Drawing.Font("Segoe UI", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegOAdmin.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnRegOAdmin.Location = new System.Drawing.Point(0, 648);
+            this.btnRegOAdmin.Name = "btnRegOAdmin";
+            this.btnRegOAdmin.Size = new System.Drawing.Size(223, 71);
+            this.btnRegOAdmin.TabIndex = 3;
+            this.btnRegOAdmin.Text = "LOGOUT";
+            this.btnRegOAdmin.UseVisualStyleBackColor = false;
+            this.btnRegOAdmin.Click += new System.EventHandler(this.btnRegOAdmin_Click);
+            // 
             // ListadoProductosAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.WindowText;
             this.ClientSize = new System.Drawing.Size(1276, 719);
+            this.Controls.Add(this.textBoxNombre);
             this.Controls.Add(this.panelProductos);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
@@ -102,5 +131,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panelProductos;
+        private System.Windows.Forms.TextBox textBoxNombre;
+        private System.Windows.Forms.Button btnRegOAdmin;
     }
 }

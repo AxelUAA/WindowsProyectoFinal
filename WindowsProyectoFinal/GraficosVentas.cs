@@ -11,10 +11,12 @@ namespace WindowsProyectoFinal
     {
         
         private string connectionServer = "Server=localhost;Database=proyecto;Uid=root;Pwd=;";
-
-        public GraficosVentas()
+        private string name;
+        public GraficosVentas(string name)
         {
             InitializeComponent();
+            this.name = name;
+            this.textBoxNombre.Text = this.name;
         }
 
         private void GraficosVentas_Load(object sender, EventArgs e)
@@ -127,7 +129,9 @@ namespace WindowsProyectoFinal
 
         private void buttonRegresarVentas_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Hide();
+            Login loginForm = new Login();
+            loginForm.ShowDialog();
         }
     }
 }

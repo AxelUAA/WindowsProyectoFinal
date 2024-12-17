@@ -29,41 +29,35 @@
         private void InitializeComponent()
         {
             this.panel1Eliminar = new System.Windows.Forms.Panel();
-            this.flowLayoutPanel2Eliminar = new System.Windows.Forms.FlowLayoutPanel();
             this.pBoxLogoEliminar = new System.Windows.Forms.PictureBox();
+            this.flowLayoutPanel2Eliminar = new System.Windows.Forms.FlowLayoutPanel();
             this.labeltitulo = new System.Windows.Forms.Label();
             this.labelEminarAviso = new System.Windows.Forms.Label();
             this.txtBoxIdEliminar = new System.Windows.Forms.TextBox();
             this.btnBuscarParaEliminar = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.lblNombreProducto = new System.Windows.Forms.Label();
-            this.lblPrecioProducto = new System.Windows.Forms.Label();
             this.lblStockProducto = new System.Windows.Forms.Label();
+            this.lblPrecioProducto = new System.Windows.Forms.Label();
+            this.lblNombreProducto = new System.Windows.Forms.Label();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnCancelarEliminacion = new System.Windows.Forms.Button();
+            this.textBoxNombre = new System.Windows.Forms.TextBox();
+            this.buttonRegresar = new System.Windows.Forms.Button();
             this.panel1Eliminar.SuspendLayout();
-            this.flowLayoutPanel2Eliminar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pBoxLogoEliminar)).BeginInit();
+            this.flowLayoutPanel2Eliminar.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1Eliminar
             // 
+            this.panel1Eliminar.Controls.Add(this.buttonRegresar);
             this.panel1Eliminar.Controls.Add(this.pBoxLogoEliminar);
             this.panel1Eliminar.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1Eliminar.Location = new System.Drawing.Point(0, 0);
             this.panel1Eliminar.Name = "panel1Eliminar";
-            this.panel1Eliminar.Size = new System.Drawing.Size(216, 969);
+            this.panel1Eliminar.Size = new System.Drawing.Size(216, 861);
             this.panel1Eliminar.TabIndex = 0;
-            // 
-            // flowLayoutPanel2Eliminar
-            // 
-            this.flowLayoutPanel2Eliminar.Controls.Add(this.labeltitulo);
-            this.flowLayoutPanel2Eliminar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.flowLayoutPanel2Eliminar.Location = new System.Drawing.Point(216, 0);
-            this.flowLayoutPanel2Eliminar.Name = "flowLayoutPanel2Eliminar";
-            this.flowLayoutPanel2Eliminar.Size = new System.Drawing.Size(1231, 132);
-            this.flowLayoutPanel2Eliminar.TabIndex = 1;
             // 
             // pBoxLogoEliminar
             // 
@@ -75,6 +69,15 @@
             this.pBoxLogoEliminar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pBoxLogoEliminar.TabIndex = 0;
             this.pBoxLogoEliminar.TabStop = false;
+            // 
+            // flowLayoutPanel2Eliminar
+            // 
+            this.flowLayoutPanel2Eliminar.Controls.Add(this.labeltitulo);
+            this.flowLayoutPanel2Eliminar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.flowLayoutPanel2Eliminar.Location = new System.Drawing.Point(216, 0);
+            this.flowLayoutPanel2Eliminar.Name = "flowLayoutPanel2Eliminar";
+            this.flowLayoutPanel2Eliminar.Size = new System.Drawing.Size(1231, 153);
+            this.flowLayoutPanel2Eliminar.TabIndex = 1;
             // 
             // labeltitulo
             // 
@@ -127,18 +130,18 @@
             this.panel1.Controls.Add(this.lblNombreProducto);
             this.panel1.Location = new System.Drawing.Point(909, 253);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(466, 555);
+            this.panel1.Size = new System.Drawing.Size(466, 467);
             this.panel1.TabIndex = 5;
             // 
-            // lblNombreProducto
+            // lblStockProducto
             // 
-            this.lblNombreProducto.AutoSize = true;
-            this.lblNombreProducto.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNombreProducto.Location = new System.Drawing.Point(67, 24);
-            this.lblNombreProducto.Name = "lblNombreProducto";
-            this.lblNombreProducto.Size = new System.Drawing.Size(141, 38);
-            this.lblNombreProducto.TabIndex = 0;
-            this.lblNombreProducto.Text = "Nombre: ";
+            this.lblStockProducto.AutoSize = true;
+            this.lblStockProducto.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStockProducto.Location = new System.Drawing.Point(71, 182);
+            this.lblStockProducto.Name = "lblStockProducto";
+            this.lblStockProducto.Size = new System.Drawing.Size(98, 38);
+            this.lblStockProducto.TabIndex = 2;
+            this.lblStockProducto.Text = "Stock:";
             // 
             // lblPrecioProducto
             // 
@@ -151,22 +154,22 @@
             this.lblPrecioProducto.Text = "Precio:";
             this.lblPrecioProducto.Click += new System.EventHandler(this.label1_Click);
             // 
-            // lblStockProducto
+            // lblNombreProducto
             // 
-            this.lblStockProducto.AutoSize = true;
-            this.lblStockProducto.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStockProducto.Location = new System.Drawing.Point(71, 182);
-            this.lblStockProducto.Name = "lblStockProducto";
-            this.lblStockProducto.Size = new System.Drawing.Size(98, 38);
-            this.lblStockProducto.TabIndex = 2;
-            this.lblStockProducto.Text = "Stock:";
+            this.lblNombreProducto.AutoSize = true;
+            this.lblNombreProducto.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombreProducto.Location = new System.Drawing.Point(67, 24);
+            this.lblNombreProducto.Name = "lblNombreProducto";
+            this.lblNombreProducto.Size = new System.Drawing.Size(141, 38);
+            this.lblNombreProducto.TabIndex = 0;
+            this.lblNombreProducto.Text = "Nombre: ";
             // 
             // btnEliminar
             // 
             this.btnEliminar.BackColor = System.Drawing.Color.Red;
             this.btnEliminar.Enabled = false;
             this.btnEliminar.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEliminar.Location = new System.Drawing.Point(1242, 858);
+            this.btnEliminar.Location = new System.Drawing.Point(1242, 751);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(133, 56);
             this.btnEliminar.TabIndex = 6;
@@ -178,19 +181,44 @@
             // 
             this.btnCancelarEliminacion.BackColor = System.Drawing.Color.Snow;
             this.btnCancelarEliminacion.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelarEliminacion.Location = new System.Drawing.Point(909, 858);
+            this.btnCancelarEliminacion.Location = new System.Drawing.Point(909, 751);
             this.btnCancelarEliminacion.Name = "btnCancelarEliminacion";
             this.btnCancelarEliminacion.Size = new System.Drawing.Size(133, 56);
             this.btnCancelarEliminacion.TabIndex = 7;
             this.btnCancelarEliminacion.Text = "Cancelar";
             this.btnCancelarEliminacion.UseVisualStyleBackColor = false;
             // 
+            // textBoxNombre
+            // 
+            this.textBoxNombre.BackColor = System.Drawing.Color.Black;
+            this.textBoxNombre.Enabled = false;
+            this.textBoxNombre.Font = new System.Drawing.Font("Cooper Black", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxNombre.ForeColor = System.Drawing.Color.White;
+            this.textBoxNombre.Location = new System.Drawing.Point(216, 115);
+            this.textBoxNombre.Name = "textBoxNombre";
+            this.textBoxNombre.Size = new System.Drawing.Size(391, 38);
+            this.textBoxNombre.TabIndex = 13;
+            // 
+            // buttonRegresar
+            // 
+            this.buttonRegresar.BackColor = System.Drawing.SystemColors.Desktop;
+            this.buttonRegresar.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonRegresar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonRegresar.Location = new System.Drawing.Point(3, 691);
+            this.buttonRegresar.Name = "buttonRegresar";
+            this.buttonRegresar.Size = new System.Drawing.Size(210, 60);
+            this.buttonRegresar.TabIndex = 14;
+            this.buttonRegresar.Text = "LOGOUT";
+            this.buttonRegresar.UseVisualStyleBackColor = false;
+            this.buttonRegresar.Click += new System.EventHandler(this.buttonRegresar_Click);
+            // 
             // EliminarProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ClientSize = new System.Drawing.Size(1447, 969);
+            this.ClientSize = new System.Drawing.Size(1447, 861);
+            this.Controls.Add(this.textBoxNombre);
             this.Controls.Add(this.btnCancelarEliminacion);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.panel1);
@@ -203,9 +231,9 @@
             this.Text = "EliminarProducto";
             this.Load += new System.EventHandler(this.EliminarProducto_Load);
             this.panel1Eliminar.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pBoxLogoEliminar)).EndInit();
             this.flowLayoutPanel2Eliminar.ResumeLayout(false);
             this.flowLayoutPanel2Eliminar.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pBoxLogoEliminar)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -228,5 +256,7 @@
         private System.Windows.Forms.Label lblStockProducto;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnCancelarEliminacion;
+        private System.Windows.Forms.TextBox textBoxNombre;
+        private System.Windows.Forms.Button buttonRegresar;
     }
 }
