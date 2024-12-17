@@ -16,5 +16,10 @@ namespace WindowsProyectoFinal
         {
             InitializeComponent();
         }
+
+        private void Compra_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

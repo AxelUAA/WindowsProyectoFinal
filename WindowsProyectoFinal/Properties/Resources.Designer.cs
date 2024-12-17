@@ -193,6 +193,16 @@ namespace WindowsProyectoFinal.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap soldout {
+            get {
+                object obj = ResourceManager.GetObject("soldout", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap tijeras {
             get {
                 object obj = ResourceManager.GetObject("tijeras", resourceCulture);
