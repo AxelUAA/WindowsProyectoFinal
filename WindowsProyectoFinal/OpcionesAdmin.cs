@@ -12,9 +12,13 @@ namespace WindowsProyectoFinal
 {
     public partial class OpcionesAdmin : Form
     {
-        public OpcionesAdmin()
+        //vars
+        private string name;
+        public OpcionesAdmin(string name)
         {
             InitializeComponent();
+            this.name = name;
+            this.textBoxNombre.Text = this.name;
         }
 
         private void bopcadmin_Click(object sender, EventArgs e)
@@ -24,33 +28,44 @@ namespace WindowsProyectoFinal
 
         private void btnDarAlta_Click(object sender, EventArgs e)
         {
-            AgregarProducto agregarProducto = new AgregarProducto();
+            this.Hide();
+            AgregarProducto agregarProducto = new AgregarProducto(name);
             agregarProducto.ShowDialog(this);
         }
 
         private void btnEliminarPro_Click(object sender, EventArgs e)
         {
-            EliminarProducto eliminar = new EliminarProducto();
-            eliminar.ShowDialog(this);
             this.Hide();
+            EliminarProducto eliminar = new EliminarProducto(name);
+            eliminar.ShowDialog(this);
+            
         }
 
         private void btnListado_Click(object sender, EventArgs e)
         {
-            ListadoProductosAdmin listado = new ListadoProductosAdmin();
+            this.Hide();
+            ListadoProductosAdmin listado = new ListadoProductosAdmin(name);
             listado.ShowDialog(this); 
         }
 
         private void btnGraficos_Click(object sender, EventArgs e)
         {
-            GraficosVentas graficosVentas = new GraficosVentas();
-            graficosVentas.Show();
             this.Hide();
+            GraficosVentas graficosVentas = new GraficosVentas(name);
+            graficosVentas.Show();
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void btnRegOAdmin_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Login loginForm = new Login();
+            loginForm.ShowDialog();
         }
     }
 }

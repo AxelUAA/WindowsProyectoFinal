@@ -15,10 +15,12 @@ namespace WindowsProyectoFinal
     public partial class ListadoProductosAdmin : Form
     {
         string cadenaConexion = "Server=localhost;Database=proyecto;Uid=root;Pwd=;";
-
-        public ListadoProductosAdmin()
+        private string name;
+        public ListadoProductosAdmin(string name)
         {
             InitializeComponent();
+            this.name = name;
+            this.textBoxNombre.Text = this.name;
         }
 
         private void ListadoProductosAdmin_Load(object sender, EventArgs e)
@@ -103,6 +105,13 @@ namespace WindowsProyectoFinal
             {
                 MessageBox.Show("Error al cargar productos: " + ex.Message);
             }
+        }
+
+        private void btnRegOAdmin_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Login loginForm = new Login();
+            loginForm.ShowDialog();
         }
     }
 }

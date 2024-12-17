@@ -29,28 +29,53 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.bopcadmin = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.btnRegOAdmin = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.bopcadmin = new System.Windows.Forms.Label();
             this.btnDarAlta = new System.Windows.Forms.Button();
             this.btnEliminarPro = new System.Windows.Forms.Button();
             this.btnListado = new System.Windows.Forms.Button();
             this.btnGraficos = new System.Windows.Forms.Button();
+            this.textBoxNombre = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.textBoxNombre);
             this.panel1.Controls.Add(this.btnRegOAdmin);
-            this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(225, 753);
+            this.panel1.Size = new System.Drawing.Size(242, 626);
             this.panel1.TabIndex = 0;
+            // 
+            // btnRegOAdmin
+            // 
+            this.btnRegOAdmin.BackColor = System.Drawing.SystemColors.ControlText;
+            this.btnRegOAdmin.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnRegOAdmin.Font = new System.Drawing.Font("Segoe UI", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegOAdmin.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnRegOAdmin.Location = new System.Drawing.Point(0, 555);
+            this.btnRegOAdmin.Name = "btnRegOAdmin";
+            this.btnRegOAdmin.Size = new System.Drawing.Size(242, 71);
+            this.btnRegOAdmin.TabIndex = 2;
+            this.btnRegOAdmin.Text = "LOGOUT";
+            this.btnRegOAdmin.UseVisualStyleBackColor = false;
+            this.btnRegOAdmin.Click += new System.EventHandler(this.btnRegOAdmin_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pictureBox1.Image = global::WindowsProyectoFinal.Properties.Resources._77_shop;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(242, 205);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
             // 
             // bopcadmin
             // 
@@ -59,48 +84,10 @@
             this.bopcadmin.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.bopcadmin.Location = new System.Drawing.Point(480, 36);
             this.bopcadmin.Name = "bopcadmin";
-            this.bopcadmin.Size = new System.Drawing.Size(584, 60);
+            this.bopcadmin.Size = new System.Drawing.Size(572, 59);
             this.bopcadmin.TabIndex = 1;
             this.bopcadmin.Text = "Opciones de Administrador";
             this.bopcadmin.Click += new System.EventHandler(this.bopcadmin_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pictureBox1.Image = global::WindowsProyectoFinal.Properties.Resources._77_shop;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(225, 205);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.SystemColors.ControlText;
-            this.button1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(0, 682);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(225, 71);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "SALIR";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // btnRegOAdmin
-            // 
-            this.btnRegOAdmin.BackColor = System.Drawing.SystemColors.ControlText;
-            this.btnRegOAdmin.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btnRegOAdmin.Font = new System.Drawing.Font("Segoe UI", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRegOAdmin.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnRegOAdmin.Location = new System.Drawing.Point(0, 611);
-            this.btnRegOAdmin.Name = "btnRegOAdmin";
-            this.btnRegOAdmin.Size = new System.Drawing.Size(225, 71);
-            this.btnRegOAdmin.TabIndex = 2;
-            this.btnRegOAdmin.Text = "REGRESAR";
-            this.btnRegOAdmin.UseVisualStyleBackColor = false;
             // 
             // btnDarAlta
             // 
@@ -154,12 +141,23 @@
             this.btnGraficos.UseVisualStyleBackColor = false;
             this.btnGraficos.Click += new System.EventHandler(this.btnGraficos_Click);
             // 
+            // textBoxNombre
+            // 
+            this.textBoxNombre.BackColor = System.Drawing.Color.Black;
+            this.textBoxNombre.Enabled = false;
+            this.textBoxNombre.Font = new System.Drawing.Font("Cooper Black", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxNombre.ForeColor = System.Drawing.Color.White;
+            this.textBoxNombre.Location = new System.Drawing.Point(-2, 207);
+            this.textBoxNombre.Name = "textBoxNombre";
+            this.textBoxNombre.Size = new System.Drawing.Size(244, 27);
+            this.textBoxNombre.TabIndex = 4;
+            // 
             // OpcionesAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ClientSize = new System.Drawing.Size(1293, 753);
+            this.ClientSize = new System.Drawing.Size(1293, 626);
             this.Controls.Add(this.btnGraficos);
             this.Controls.Add(this.btnListado);
             this.Controls.Add(this.btnEliminarPro);
@@ -169,6 +167,7 @@
             this.Name = "OpcionesAdmin";
             this.Text = "OpcionesAdmin";
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -180,11 +179,11 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label bopcadmin;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnRegOAdmin;
         private System.Windows.Forms.Button btnDarAlta;
         private System.Windows.Forms.Button btnEliminarPro;
         private System.Windows.Forms.Button btnListado;
         private System.Windows.Forms.Button btnGraficos;
+        private System.Windows.Forms.TextBox textBoxNombre;
     }
 }

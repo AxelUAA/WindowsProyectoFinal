@@ -186,15 +186,15 @@ namespace WindowsProyectoFinal
                             (tipoUsuarioSeleccionado == "Invitado" && radioInvitado.Checked))
                         {
                             // Redireccionar según el tipo de usuario
-                            this.Hide();
+                            this.Close();
                             if (tipoUsuarioSeleccionado == "Administrador")
                             {
                                 if (cuenta == "admin")
                                 {
                                     MessageBox.Show($"Inicio de sesión exitoso como {tipoUsuarioSeleccionado}.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     //form de admin
-                                    this.Hide();
-                                    OpcionesAdmin opcionesAdmin = new OpcionesAdmin();
+                                    nombre = adminLogin.name;
+                                    OpcionesAdmin opcionesAdmin = new OpcionesAdmin(nombre);
                                     opcionesAdmin.ShowDialog();
                                 }
                                 else

@@ -41,8 +41,10 @@
             this.btnCanAgregar = new System.Windows.Forms.Button();
             this.btnSalirDeAgregar = new System.Windows.Forms.Button();
             this.txtNombreProdAgregar = new System.Windows.Forms.TextBox();
+            this.textBoxNombre = new System.Windows.Forms.TextBox();
             this.panel1AggPro.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProducto)).BeginInit();
             this.SuspendLayout();
             // 
@@ -68,6 +70,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.textBoxNombre);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(207, 0);
             this.panel1.Name = "panel1";
@@ -163,7 +166,7 @@
             this.btnCanAgregar.BackColor = System.Drawing.SystemColors.ControlText;
             this.btnCanAgregar.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCanAgregar.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnCanAgregar.Location = new System.Drawing.Point(965, 354);
+            this.btnCanAgregar.Location = new System.Drawing.Point(965, 388);
             this.btnCanAgregar.Name = "btnCanAgregar";
             this.btnCanAgregar.Size = new System.Drawing.Size(228, 97);
             this.btnCanAgregar.TabIndex = 9;
@@ -176,11 +179,11 @@
             this.btnSalirDeAgregar.BackColor = System.Drawing.SystemColors.ControlText;
             this.btnSalirDeAgregar.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSalirDeAgregar.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnSalirDeAgregar.Location = new System.Drawing.Point(953, 677);
+            this.btnSalirDeAgregar.Location = new System.Drawing.Point(965, 573);
             this.btnSalirDeAgregar.Name = "btnSalirDeAgregar";
             this.btnSalirDeAgregar.Size = new System.Drawing.Size(228, 97);
             this.btnSalirDeAgregar.TabIndex = 10;
-            this.btnSalirDeAgregar.Text = "SALIR";
+            this.btnSalirDeAgregar.Text = "Logout";
             this.btnSalirDeAgregar.UseVisualStyleBackColor = false;
             this.btnSalirDeAgregar.Click += new System.EventHandler(this.btnSalirDeAgregar_Click);
             // 
@@ -195,6 +198,17 @@
             this.txtNombreProdAgregar.TabIndex = 11;
             this.txtNombreProdAgregar.Enter += new System.EventHandler(this.txtNombreProdAgregar_Enter);
             this.txtNombreProdAgregar.Leave += new System.EventHandler(this.txtNombreProdAgregar_Leave);
+            // 
+            // textBoxNombre
+            // 
+            this.textBoxNombre.BackColor = System.Drawing.Color.Black;
+            this.textBoxNombre.Enabled = false;
+            this.textBoxNombre.Font = new System.Drawing.Font("Cooper Black", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxNombre.ForeColor = System.Drawing.Color.White;
+            this.textBoxNombre.Location = new System.Drawing.Point(0, 91);
+            this.textBoxNombre.Name = "textBoxNombre";
+            this.textBoxNombre.Size = new System.Drawing.Size(391, 38);
+            this.textBoxNombre.TabIndex = 12;
             // 
             // AgregarProducto
             // 
@@ -220,6 +234,8 @@
             this.Load += new System.EventHandler(this.AgregarProducto_Load);
             this.panel1AggPro.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProducto)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -241,5 +257,6 @@
         private System.Windows.Forms.Button btnCanAgregar;
         private System.Windows.Forms.Button btnSalirDeAgregar;
         private System.Windows.Forms.TextBox txtNombreProdAgregar;
+        private System.Windows.Forms.TextBox textBoxNombre;
     }
 }
