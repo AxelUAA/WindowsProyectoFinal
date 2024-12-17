@@ -25,10 +25,7 @@ namespace WindowsProyectoFinal
                 MessageBox.Show("Conexión cerrada correctamente.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-        /// <summary>
-        /// ///////////////////////////////////////////////////////////////////////////
-        /// </summary>
-        /// <returns></returns>
+        
         public List<string> ConsultaNombresImagen()
         {
             List<string> nombresImagen = new List<string>();
@@ -61,11 +58,6 @@ namespace WindowsProyectoFinal
 
             return nombresImagen;
         }
-
-        
-        /// <summary>
-        /// ///////////////////////////////////////////////////////////////////
-        /// </summary>
 
         public void Connect()
         {

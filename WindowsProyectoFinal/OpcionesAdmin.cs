@@ -30,7 +30,9 @@ namespace WindowsProyectoFinal
 
         private void btnEliminarPro_Click(object sender, EventArgs e)
         {
-
+            EliminarProducto eliminar = new EliminarProducto();
+            eliminar.ShowDialog(this);
+            this.Hide();
         }
 
         private void btnListado_Click(object sender, EventArgs e)
@@ -41,7 +43,8 @@ namespace WindowsProyectoFinal
         private void btnGraficos_Click(object sender, EventArgs e)
         {
             GraficosVentas graficosVentas = new GraficosVentas();
-            graficosVentas.ShowDialog(this);
+            graficosVentas.Show();
+            this.Hide();
         }
 
         private void button1_Click(object sender, EventArgs e)

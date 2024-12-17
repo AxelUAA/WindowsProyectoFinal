@@ -9,6 +9,7 @@ namespace WindowsProyectoFinal
 {
     public partial class GraficosVentas : Form
     {
+        
         private string connectionServer = "Server=localhost;Database=proyecto;Uid=root;Pwd=;";
 
         public GraficosVentas()
@@ -29,7 +30,7 @@ namespace WindowsProyectoFinal
                 List<int> stock = new List<int>();
                 List<decimal> precio = new List<decimal>();
 
-                // Conexión y consulta a la base de datos
+                
                 using (MySqlConnection conn = new MySqlConnection(connectionServer))
                 {
                     conn.Open();
@@ -46,7 +47,7 @@ namespace WindowsProyectoFinal
                     conn.Close();
                 }
 
-                // Generar los gráficos
+                
                 GenerarGraficaStock(nombres, stock);
                 GenerarGraficaPrecio(nombres, precio);
             }
@@ -58,33 +59,29 @@ namespace WindowsProyectoFinal
 
         private void GenerarGraficaStock(List<string> nombres, List<int> stocks)
         {
-            // Limpiar gráfico anterior
             chartStock.Series.Clear();
             chartStock.Titles.Clear();
 
-            // Configurar título con estilo
             var titulo = chartStock.Titles.Add("Stock de Productos");
             titulo.Font = new Font("Arial", 16, FontStyle.Bold);
             titulo.ForeColor = Color.DarkBlue;
 
-            // Crear la serie de Stock
             var serieStock = new System.Windows.Forms.DataVisualization.Charting.Series("Stock");
             serieStock.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
             serieStock.Color = Color.CornflowerBlue;
             serieStock.IsValueShownAsLabel = true;
             serieStock.Font = new Font("Arial", 10, FontStyle.Bold);
 
-            // Añadir datos a la serie
             for (int i = 0; i < nombres.Count; i++)
             {
                 var pointIndex = serieStock.Points.AddXY(nombres[i], stocks[i]);
-                serieStock.Points[pointIndex].Color = Color.FromArgb(100 + i * 10, 120, 200); // Colores dinámicos
+                serieStock.Points[pointIndex].Color = Color.FromArgb(100 + i * 10, 120, 200); 
             }
 
-            // Agregar serie al gráfico
+           
             chartStock.Series.Add(serieStock);
 
-            // Configurar ejes con estilo
+            
             chartStock.ChartAreas[0].AxisX.Title = "Productos";
             chartStock.ChartAreas[0].AxisX.TitleFont = new Font("Arial", 12, FontStyle.Bold);
             chartStock.ChartAreas[0].AxisY.Title = "Cantidad en Stock";
@@ -94,33 +91,33 @@ namespace WindowsProyectoFinal
 
         private void GenerarGraficaPrecio(List<string> nombres, List<decimal> precios)
         {
-            // Limpiar gráfico anterior
+            
             chartPrecio.Series.Clear();
             chartPrecio.Titles.Clear();
 
-            // Configurar título con estilo
+            
             var titulo = chartPrecio.Titles.Add("Precios de Productos");
             titulo.Font = new Font("Arial", 16, FontStyle.Bold);
             titulo.ForeColor = Color.DarkRed;
 
-            // Crear la serie de Precio
+           
             var seriePrecio = new System.Windows.Forms.DataVisualization.Charting.Series("Precio");
             seriePrecio.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
             seriePrecio.Color = Color.OrangeRed;
             seriePrecio.IsValueShownAsLabel = true;
             seriePrecio.Font = new Font("Arial", 10, FontStyle.Bold);
 
-            // Añadir datos a la serie
+            
             for (int i = 0; i < nombres.Count; i++)
             {
                 var pointIndex = seriePrecio.Points.AddXY(nombres[i], precios[i]);
-                seriePrecio.Points[pointIndex].Color = Color.FromArgb(200, 100 + i * 10, 100); // Colores dinámicos
+                seriePrecio.Points[pointIndex].Color = Color.FromArgb(200, 100 + i * 10, 100); 
             }
 
-            // Agregar serie al gráfico
+          
             chartPrecio.Series.Add(seriePrecio);
 
-            // Configurar ejes con estilo
+            
             chartPrecio.ChartAreas[0].AxisX.Title = "Productos";
             chartPrecio.ChartAreas[0].AxisX.TitleFont = new Font("Arial", 12, FontStyle.Bold);
             chartPrecio.ChartAreas[0].AxisY.Title = "Precio";
@@ -128,9 +125,9 @@ namespace WindowsProyectoFinal
             chartPrecio.ChartAreas[0].RecalculateAxesScale();
         }
 
-        private void buttonActualizarVentas_Click(object sender, EventArgs e)
+        private void buttonRegresarVentas_Click(object sender, EventArgs e)
         {
-            
+            this.Close();
         }
     }
 }
