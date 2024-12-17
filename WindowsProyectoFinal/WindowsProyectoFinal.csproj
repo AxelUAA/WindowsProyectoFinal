@@ -128,6 +128,7 @@
     <Compile Include="Carrito.Designer.cs">
       <DependentUpon>Carrito.cs</DependentUpon>
     </Compile>
+    <Compile Include="CarritoGlobal.cs" />
     <Compile Include="Compra.cs">
       <SubType>Form</SubType>
     </Compile>
