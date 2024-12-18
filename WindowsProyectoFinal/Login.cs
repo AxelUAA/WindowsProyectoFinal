@@ -218,8 +218,8 @@ namespace WindowsProyectoFinal
                                 MessageBox.Show($"Inicio de sesión exitoso como {tipoUsuarioSeleccionado}.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 // Obtenemos el nombre del usuario desde la propiedad
                                 nombre = adminLogin.name;
-                                Stock Stock = new Stock(userId, nombre);
-                                Stock.ShowDialog();
+                                StockInvitado StockInvitado = new StockInvitado(userId, nombre);
+                                StockInvitado.ShowDialog();
                             }
 
                             this.Show();

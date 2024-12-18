@@ -67,7 +67,7 @@ namespace WindowsProyectoFinal
                         textBoxes[i].Text = nombresImagen[i];
                         textBoxes[i].ReadOnly = true;
 
-                        // Crear ruta relativa a "Resources"
+                        // Crear la ruta relativa a la carpeta "Resources"
                         string rutaImagen = Path.Combine(Application.StartupPath, "Resources", nombresImagen[i] + ".png");
 
                         if (File.Exists(rutaImagen))
@@ -96,6 +96,7 @@ namespace WindowsProyectoFinal
                 MessageBox.Show("Error al cargar datos o imágenes: " + ex.Message);
             }
         }
+
         private void Stock_Load(object sender, EventArgs e)
         {
 
