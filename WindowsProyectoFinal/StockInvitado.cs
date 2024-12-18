@@ -42,22 +42,22 @@ namespace WindowsProyectoFinal
             {
                 AdminProd obj = new AdminProd();
 
-                List<string> nombresImagen = obj.ConsultaNombresImagen(); 
+                // Obtener los nombres de las imágenes
+                List<string> nombresImagen = obj.ConsultaNombresImagen();
 
-                TextBox[] textBoxes = { textBox1, textBox2, textBox3, textBox4, textBox5, textBox6, textBox7, textBox8, textBox9, textBox10 }; 
-
-                
-                PictureBox[] pictureBoxes = { pictureBox3, pictureBox4, pictureBox5, pictureBox6, pictureBox7, pictureBox8, pictureBox9, pictureBox10, pictureBox11, pictureBox12 }; 
+                // Arreglos de TextBox y PictureBox
+                TextBox[] textBoxes = { textBox1, textBox2, textBox3, textBox4, textBox5, textBox6, textBox7, textBox8, textBox9, textBox10 };
+                PictureBox[] pictureBoxes = { pictureBox3, pictureBox4, pictureBox5, pictureBox6, pictureBox7, pictureBox8, pictureBox9, pictureBox10, pictureBox11, pictureBox12 };
 
                 for (int i = 0; i < textBoxes.Length; i++)
                 {
-                    if (i < nombresImagen.Count) 
+                    if (i < nombresImagen.Count)
                     {
                         textBoxes[i].Text = nombresImagen[i];
-                        textBoxes[i].ReadOnly = true; 
+                        textBoxes[i].ReadOnly = true;
 
-                        
-                        string rutaImagen = Path.Combine(Application.StartupPath, "Recursos", nombresImagen[i] + ".png"); 
+                        // Crear ruta relativa a "Resources"
+                        string rutaImagen = Path.Combine(Application.StartupPath, "Resources", nombresImagen[i] + ".png");
 
                         if (File.Exists(rutaImagen))
                         {
@@ -65,15 +65,15 @@ namespace WindowsProyectoFinal
                         }
                         else
                         {
-                            pictureBoxes[i].Image = Properties.Resources.soldout;
+                            pictureBoxes[i].Image = Properties.Resources.soldout; // Imagen predeterminada
                         }
 
                         pictureBoxes[i].SizeMode = PictureBoxSizeMode.Zoom;
                     }
                     else
                     {
-                        textBoxes[i].Text = ""; 
-                        pictureBoxes[i].Image = null; 
+                        textBoxes[i].Text = "";
+                        pictureBoxes[i].Image = null;
                     }
                 }
 
