@@ -50,11 +50,9 @@
             this.groupBoxLogin.Controls.Add(this.pictureBox2);
             this.groupBoxLogin.Font = new System.Drawing.Font("Segoe UI", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxLogin.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.groupBoxLogin.Location = new System.Drawing.Point(124, 131);
-            this.groupBoxLogin.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBoxLogin.Location = new System.Drawing.Point(110, 105);
             this.groupBoxLogin.Name = "groupBoxLogin";
-            this.groupBoxLogin.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBoxLogin.Size = new System.Drawing.Size(924, 512);
+            this.groupBoxLogin.Size = new System.Drawing.Size(821, 410);
             this.groupBoxLogin.TabIndex = 3;
             this.groupBoxLogin.TabStop = false;
             this.groupBoxLogin.Text = "Carrito de compras";
@@ -65,10 +63,10 @@
             this.buttonEliminar.BackColor = System.Drawing.SystemColors.ControlText;
             this.buttonEliminar.Font = new System.Drawing.Font("Segoe UI Black", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonEliminar.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.buttonEliminar.Location = new System.Drawing.Point(601, 230);
+            this.buttonEliminar.Location = new System.Drawing.Point(534, 184);
             this.buttonEliminar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonEliminar.Name = "buttonEliminar";
-            this.buttonEliminar.Size = new System.Drawing.Size(235, 41);
+            this.buttonEliminar.Size = new System.Drawing.Size(209, 33);
             this.buttonEliminar.TabIndex = 28;
             this.buttonEliminar.Text = "Eliminar";
             this.buttonEliminar.UseVisualStyleBackColor = false;
@@ -77,28 +75,30 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(594, 140);
+            this.label1.Location = new System.Drawing.Point(528, 112);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(256, 38);
+            this.label1.Size = new System.Drawing.Size(208, 31);
             this.label1.TabIndex = 27;
             this.label1.Text = "Eliminar producto";
             // 
             // textBoxEliminar
             // 
             this.textBoxEliminar.BackColor = System.Drawing.SystemColors.WindowFrame;
-            this.textBoxEliminar.Location = new System.Drawing.Point(601, 181);
+            this.textBoxEliminar.Location = new System.Drawing.Point(534, 145);
+            this.textBoxEliminar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxEliminar.Name = "textBoxEliminar";
-            this.textBoxEliminar.Size = new System.Drawing.Size(235, 44);
+            this.textBoxEliminar.Size = new System.Drawing.Size(209, 38);
             this.textBoxEliminar.TabIndex = 26;
             this.textBoxEliminar.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // richTextBox1
             // 
             this.richTextBox1.BackColor = System.Drawing.SystemColors.WindowFrame;
-            this.richTextBox1.Location = new System.Drawing.Point(68, 143);
+            this.richTextBox1.Location = new System.Drawing.Point(60, 114);
+            this.richTextBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(396, 331);
+            this.richTextBox1.Size = new System.Drawing.Size(352, 266);
             this.richTextBox1.TabIndex = 3;
             this.richTextBox1.Text = "";
             this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
@@ -107,10 +107,9 @@
             // 
             this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox2.Image = global::WindowsProyectoFinal.Properties.Resources.Logo2;
-            this.pictureBox2.Location = new System.Drawing.Point(377, 0);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pictureBox2.Location = new System.Drawing.Point(335, 0);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(165, 136);
+            this.pictureBox2.Size = new System.Drawing.Size(147, 109);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 2;
             this.pictureBox2.TabStop = false;
@@ -120,10 +119,10 @@
             this.button2.BackColor = System.Drawing.SystemColors.ControlText;
             this.button2.Font = new System.Drawing.Font("Segoe UI Black", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.button2.Location = new System.Drawing.Point(124, 649);
+            this.button2.Location = new System.Drawing.Point(110, 519);
             this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(153, 87);
+            this.button2.Size = new System.Drawing.Size(136, 70);
             this.button2.TabIndex = 22;
             this.button2.Text = "Regresar";
             this.button2.UseVisualStyleBackColor = false;
@@ -134,10 +133,10 @@
             this.button1.BackColor = System.Drawing.SystemColors.ControlText;
             this.button1.Font = new System.Drawing.Font("Segoe UI Black", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.button1.Location = new System.Drawing.Point(895, 663);
+            this.button1.Location = new System.Drawing.Point(796, 530);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(175, 87);
+            this.button1.Size = new System.Drawing.Size(156, 70);
             this.button1.TabIndex = 23;
             this.button1.Text = "Pagar";
             this.button1.UseVisualStyleBackColor = false;
@@ -145,15 +144,17 @@
             // 
             // Carrito
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::WindowsProyectoFinal.Properties.Resources.FONDO;
-            this.ClientSize = new System.Drawing.Size(1172, 925);
+            this.ClientSize = new System.Drawing.Size(1042, 740);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.groupBoxLogin);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Carrito";
             this.Text = "Carrito";
+            this.Load += new System.EventHandler(this.Carrito_Load);
             this.groupBoxLogin.ResumeLayout(false);
             this.groupBoxLogin.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();

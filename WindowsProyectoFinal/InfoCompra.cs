@@ -239,5 +239,10 @@ namespace WindowsProyectoFinal
             Efectivo efectivo = new Efectivo(totalConImpuestos);
             efectivo.ShowDialog();
         }
+
+        private void InfoCompra_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -131,5 +131,9 @@ namespace WindowsProyectoFinal
             }
         }
 
+        private void Carrito_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
