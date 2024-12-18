@@ -184,6 +184,10 @@ namespace WindowsProyectoFinal
                 MessageBox.Show($"Error al generar el ticket: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             //limpiar variable antes de usarse otra vez
+
+            // Eliminar productos con stock = 0 de la base de datos
+            AdminProd adminProd = new AdminProd();
+            int productosEliminados = adminProd.EliminarProductosSinStock();
             CarritoGlobal.carrito.Clear();
 
             this.Close();

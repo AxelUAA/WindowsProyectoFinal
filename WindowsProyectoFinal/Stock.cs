@@ -67,7 +67,7 @@ namespace WindowsProyectoFinal
                         textBoxes[i].Text = nombresImagen[i];
                         textBoxes[i].ReadOnly = true;
 
-                        // Crear la ruta relativa a la carpeta "Resources"
+                        // Crear ruta relativa a "Resources"
                         string rutaImagen = Path.Combine(Application.StartupPath, "Resources", nombresImagen[i] + ".png");
 
                         if (File.Exists(rutaImagen))

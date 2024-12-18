@@ -63,13 +63,13 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.labelHora = new System.Windows.Forms.Label();
             this.textBoxNombre = new System.Windows.Forms.TextBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.buttonLogout = new System.Windows.Forms.Button();
             this.buttonCarro = new System.Windows.Forms.Button();
             this.buttonVer = new System.Windows.Forms.Button();
-            this.labelHora = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
@@ -490,12 +490,23 @@
             this.panel7.Size = new System.Drawing.Size(865, 228);
             this.panel7.TabIndex = 1;
             // 
+            // labelHora
+            // 
+            this.labelHora.AutoSize = true;
+            this.labelHora.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.labelHora.Location = new System.Drawing.Point(554, 10);
+            this.labelHora.Name = "labelHora";
+            this.labelHora.Size = new System.Drawing.Size(51, 20);
+            this.labelHora.TabIndex = 4;
+            this.labelHora.Text = "label1";
+            this.labelHora.Click += new System.EventHandler(this.labelHora_Click);
+            // 
             // textBoxNombre
             // 
-            this.textBoxNombre.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.textBoxNombre.BackColor = System.Drawing.SystemColors.MenuBar;
             this.textBoxNombre.Enabled = false;
             this.textBoxNombre.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxNombre.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.textBoxNombre.ForeColor = System.Drawing.SystemColors.ControlText;
             this.textBoxNombre.Location = new System.Drawing.Point(558, 34);
             this.textBoxNombre.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBoxNombre.Name = "textBoxNombre";
@@ -564,17 +575,6 @@
             this.buttonVer.Text = "Ver Stock";
             this.buttonVer.UseVisualStyleBackColor = false;
             this.buttonVer.Click += new System.EventHandler(this.buttonVer_Click);
-            // 
-            // labelHora
-            // 
-            this.labelHora.AutoSize = true;
-            this.labelHora.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.labelHora.Location = new System.Drawing.Point(554, 10);
-            this.labelHora.Name = "labelHora";
-            this.labelHora.Size = new System.Drawing.Size(51, 20);
-            this.labelHora.TabIndex = 4;
-            this.labelHora.Text = "label1";
-            this.labelHora.Click += new System.EventHandler(this.labelHora_Click);
             // 
             // timer1
             // 
