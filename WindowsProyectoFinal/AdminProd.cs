@@ -22,7 +22,6 @@ namespace WindowsProyectoFinal
             if (connection != null && connection.State == System.Data.ConnectionState.Open)
             {
                 connection.Close();
-                MessageBox.Show("Conexión cerrada correctamente.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
         
@@ -66,7 +65,6 @@ namespace WindowsProyectoFinal
             {
                 connection = new MySqlConnection(cadena);
                 connection.Open();
-                MessageBox.Show("Conexión establecida exitosamente.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
@@ -74,39 +72,37 @@ namespace WindowsProyectoFinal
             }
         }
 
-        public Productos ConsultaProducto(string nombreProducto)
+        public Productos ConsultaProducto(string nombreImagen)
         {
-            Productos producto = null;
-
             try
             {
-                // Consulta SQL para obtener la información del producto
-                string query = "SELECT `descripcion`, `precio`, `stock` FROM `productos` WHERE `nombreimagen` = @NombreImagen;";
+                string query = "SELECT nombreimagen, descripcion, precio, stock FROM productos WHERE nombreimagen = @nombreImagen;";
                 MySqlCommand command = new MySqlCommand(query, this.connection);
-                command.Parameters.AddWithValue("@NombreImagen", nombreProducto);
+                command.Parameters.AddWithValue("@nombreImagen", nombreImagen);
 
-                // Ejecutar la consulta y leer los datos
                 MySqlDataReader reader = command.ExecuteReader();
+
                 if (reader.Read())
                 {
-                    producto = new Productos(
-                        0,                                      // ID (puedes ajustarlo si es necesario)
-                        nombreProducto,                         // NombreImagen
-                        reader["descripcion"].ToString(),       // Descripción
-                        Convert.ToInt32(reader["precio"]),    // Precio
-                        Convert.ToInt32(reader["stock"])        // Stock
-                    );
+                    string nombre = reader["nombreimagen"].ToString();
+                    string descripcion = reader["descripcion"].ToString();
+                    int precio = Convert.ToInt32(reader["precio"]);
+                    int stock = Convert.ToInt32(reader["stock"]);
+
+                    reader.Close();
+                    return new Productos(0, nombre, descripcion, precio, stock);
                 }
 
-                reader.Close(); // Cerrar el lector
+                reader.Close();
+                return null;
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error al consultar el producto: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
             }
-
-            return producto;
         }
+
 
         public bool ActualizarStock(string nombreImagen, int nuevoStock)
         {

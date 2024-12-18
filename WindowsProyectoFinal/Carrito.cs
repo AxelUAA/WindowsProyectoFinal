@@ -57,35 +57,11 @@ namespace WindowsProyectoFinal
 
             foreach (Productos producto in CarritoGlobal.carrito)
             {
-                richTextBox1.AppendText($"Nombre: {producto.Nombreimagen}\n");
+                richTextBox1.AppendText($"{producto.Nombreimagen}\n");
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                // Ejemplo: listaProductos contiene todos los productos disponibles.
-                // El usuario seleccionará un producto por índice (ajusta según tu lógica).
-                int indiceSeleccionado = 0; // Cambia este índice por el correcto
-
-                if (indiceSeleccionado >= 0 && indiceSeleccionado < CarritoGlobal.carrito.Count)
-                {
-                    // Actualizar el RichTextBox
-                    ActualizarCarrito();
-                }
-                else
-                {
-                    MessageBox.Show("No hay un producto seleccionado válido.",
-                                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al agregar al carrito: " + ex.Message,
-                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
+        
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
@@ -99,27 +75,61 @@ namespace WindowsProyectoFinal
                 // Obtén el nombre del producto a eliminar
                 string nombreAEliminar = textBoxEliminar.Text; // TextBox donde el usuario escribe el nombre del producto
 
-                // Buscar y eliminar el producto del carrito
+                // Buscar el producto en el carrito
                 Productos productoAEliminar = CarritoGlobal.carrito.FirstOrDefault(p => p.Nombreimagen == nombreAEliminar);
 
                 if (productoAEliminar != null)
                 {
-                    CarritoGlobal.carrito.Remove(productoAEliminar);
+                    // 1. Conectar con la base de datos
+                    AdminProd adminProd = new AdminProd();
 
-                    // Actualizar el RichTextBox
-                    ActualizarCarrito();
+                    // 2. Recuperar el stock actual del producto en la base de datos
+                    Productos productoDB = adminProd.ConsultaProducto(nombreAEliminar);
 
-                    MessageBox.Show($"Producto '{nombreAEliminar}' eliminado del carrito.", "Carrito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (productoDB != null)
+                    {
+                        int nuevoStock = productoDB.Stock + 1; // Incrementar el stock en 1
+
+                        // 3. Actualizar el stock en la base de datos
+                        bool stockActualizado = adminProd.ActualizarStock(nombreAEliminar, nuevoStock);
+
+                        if (stockActualizado)
+                        {
+                            // 4. Eliminar el producto del carrito
+                            CarritoGlobal.carrito.Remove(productoAEliminar);
+
+                            // Actualizar el RichTextBox o interfaz
+                            ActualizarCarrito();
+
+                            MessageBox.Show($"Producto '{nombreAEliminar}' eliminado del carrito y stock actualizado.",
+                                "Carrito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Error al actualizar el stock en la base de datos.",
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("El producto no existe en la base de datos.",
+                            "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+
+                    adminProd.Disconnect(); // Cerrar conexión
                 }
                 else
                 {
-                    MessageBox.Show("Producto no encontrado en el carrito.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Producto no encontrado en el carrito.",
+                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al eliminar el producto: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error al eliminar el producto: " + ex.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
     }
 }
