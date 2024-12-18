@@ -12,7 +12,7 @@ namespace WindowsProyectoFinal
 {
     public partial class OpcionesAdmin : Form
     {
-        //vars
+        
         private string name;
         public OpcionesAdmin(string name)
         {
@@ -66,6 +66,11 @@ namespace WindowsProyectoFinal
             this.Hide();
             Login loginForm = new Login();
             loginForm.ShowDialog();
+        }
+
+        private void OpcionesAdmin_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
