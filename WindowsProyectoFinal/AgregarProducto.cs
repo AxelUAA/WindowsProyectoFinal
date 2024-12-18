@@ -183,7 +183,7 @@ namespace WindowsProyectoFinal
                             cmd.Parameters.AddWithValue("@descripcion", txtDescripcion.Text);
                             cmd.Parameters.AddWithValue("@precio", Convert.ToDecimal(txtPrecio.Text));
                             cmd.Parameters.AddWithValue("@stock", Convert.ToInt32(txtExistencias.Text));
-                            cmd.Parameters.AddWithValue("@nombreimagen", nombreImagen);
+                            cmd.Parameters.AddWithValue("@nombreimagen", textBoxNombre.Text);
 
                             cmd.ExecuteNonQuery();
                         }
