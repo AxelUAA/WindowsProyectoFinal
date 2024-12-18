@@ -129,6 +129,24 @@ namespace WindowsProyectoFinal
             }
         }
 
+        public int EliminarProductosSinStock()
+        {
+            try
+            {
+                string query = "DELETE FROM productos WHERE stock = 0;";
+                MySqlCommand command = new MySqlCommand(query, this.connection);
+
+                // Ejecutar la consulta y obtener la cantidad de filas afectadas
+                int filasEliminadas = command.ExecuteNonQuery();
+                return filasEliminadas; // Retornar el número de productos eliminados
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al eliminar productos sin stock: {ex.Message}",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 0; // Retorna 0 si hubo un error
+            }
+        }
 
     }
 }
