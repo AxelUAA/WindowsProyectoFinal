@@ -100,11 +100,11 @@ namespace WindowsProyectoFinal
 
         private void OpcAdmin_Click(object sender, EventArgs e)
         {
-    
-                // If the user is an admin, open the Opciones Admin form
-                OpcionesAdmin opcionesAdmin = new OpcionesAdmin(name);
-                opcionesAdmin.ShowDialog();
-            
+
+            // If the user is an admin, open the Opciones Admin form
+            OpcionesAdmin opcionesAdmin = new OpcionesAdmin(name);
+            opcionesAdmin.ShowDialog();
+
             /*else
             {
                 // If the user is not an admin, show a message
@@ -161,7 +161,7 @@ namespace WindowsProyectoFinal
                 {
                     AdminProd adminProd = new AdminProd();
 
-                    // Consultar el producto
+
                     Productos producto = adminProd.ConsultaProducto(nombreImagen);
 
                     if (producto != null)
@@ -209,7 +209,682 @@ namespace WindowsProyectoFinal
                             "Producto no encontrado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
 
-                    adminProd.Disconnect(); // Cerrar conexión
+                    adminProd.Disconnect();
+                }
+                else
+                {
+                    MessageBox.Show("El TextBox está vacío. No se puede agregar al carrito.",
+                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al agregar al carrito: " + ex.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            int cantidadEnCarrito1 = 0;
+
+            try
+            {
+                string nombreImagen = textBox2.Text;
+
+                if (!string.IsNullOrEmpty(nombreImagen))
+                {
+                    AdminProd adminProd = new AdminProd();
+
+
+                    Productos producto = adminProd.ConsultaProducto(nombreImagen);
+
+                    if (producto != null)
+                    {
+                        if (producto.Stock > cantidadEnCarrito1)
+                        {
+                            // Incrementar el contador para este producto
+                            cantidadEnCarrito1++;
+
+                            // Decrementar el stock en la base de datos
+                            bool stockActualizado = adminProd.ActualizarStock(nombreImagen, producto.Stock - 1);
+
+                            if (stockActualizado)
+                            {
+                                // Agregar el producto al carrito
+                                CarritoGlobal.carrito.Add(producto);
+
+                                // Mostrar los detalles del producto
+                                MessageBox.Show(
+                                    $"Producto agregado al carrito:\n\n" +
+                                    $"Nombre: {nombreImagen}\n" +
+                                    $"Descripción: {producto.Descripcion}\n" +
+                                    $"Precio: {producto.Precio:C}\n" +
+                                    $"Existencias restantes: {producto.Stock - cantidadEnCarrito1}",
+                                    "Carrito",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Error al actualizar el stock en la base de datos.",
+                                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show($"No se pueden agregar más unidades del producto '{nombreImagen}'.\n" +
+                                $"Stock disponible: {producto.Stock}, ya tienes: {cantidadEnCarrito1}.",
+                                "Límite alcanzado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show($"El producto '{nombreImagen}' no se encuentra en la base de datos.",
+                            "Producto no encontrado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+
+                    adminProd.Disconnect();
+                }
+                else
+                {
+                    MessageBox.Show("El TextBox está vacío. No se puede agregar al carrito.",
+                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al agregar al carrito: " + ex.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            int cantidadEnCarrito1 = 0;
+
+            try
+            {
+                string nombreImagen = textBox3.Text;
+
+                if (!string.IsNullOrEmpty(nombreImagen))
+                {
+                    AdminProd adminProd = new AdminProd();
+
+
+                    Productos producto = adminProd.ConsultaProducto(nombreImagen);
+
+                    if (producto != null)
+                    {
+                        if (producto.Stock > cantidadEnCarrito1)
+                        {
+                            // Incrementar el contador para este producto
+                            cantidadEnCarrito1++;
+
+                            // Decrementar el stock en la base de datos
+                            bool stockActualizado = adminProd.ActualizarStock(nombreImagen, producto.Stock - 1);
+
+                            if (stockActualizado)
+                            {
+                                // Agregar el producto al carrito
+                                CarritoGlobal.carrito.Add(producto);
+
+                                // Mostrar los detalles del producto
+                                MessageBox.Show(
+                                    $"Producto agregado al carrito:\n\n" +
+                                    $"Nombre: {nombreImagen}\n" +
+                                    $"Descripción: {producto.Descripcion}\n" +
+                                    $"Precio: {producto.Precio:C}\n" +
+                                    $"Existencias restantes: {producto.Stock - cantidadEnCarrito1}",
+                                    "Carrito",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Error al actualizar el stock en la base de datos.",
+                                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show($"No se pueden agregar más unidades del producto '{nombreImagen}'.\n" +
+                                $"Stock disponible: {producto.Stock}, ya tienes: {cantidadEnCarrito1}.",
+                                "Límite alcanzado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show($"El producto '{nombreImagen}' no se encuentra en la base de datos.",
+                            "Producto no encontrado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+
+                    adminProd.Disconnect();
+                }
+                else
+                {
+                    MessageBox.Show("El TextBox está vacío. No se puede agregar al carrito.",
+                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al agregar al carrito: " + ex.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            int cantidadEnCarrito1 = 0;
+
+            try
+            {
+                string nombreImagen = textBox4.Text;
+
+                if (!string.IsNullOrEmpty(nombreImagen))
+                {
+                    AdminProd adminProd = new AdminProd();
+
+
+                    Productos producto = adminProd.ConsultaProducto(nombreImagen);
+
+                    if (producto != null)
+                    {
+                        if (producto.Stock > cantidadEnCarrito1)
+                        {
+                            // Incrementar el contador para este producto
+                            cantidadEnCarrito1++;
+
+                            // Decrementar el stock en la base de datos
+                            bool stockActualizado = adminProd.ActualizarStock(nombreImagen, producto.Stock - 1);
+
+                            if (stockActualizado)
+                            {
+                                // Agregar el producto al carrito
+                                CarritoGlobal.carrito.Add(producto);
+
+                                // Mostrar los detalles del producto
+                                MessageBox.Show(
+                                    $"Producto agregado al carrito:\n\n" +
+                                    $"Nombre: {nombreImagen}\n" +
+                                    $"Descripción: {producto.Descripcion}\n" +
+                                    $"Precio: {producto.Precio:C}\n" +
+                                    $"Existencias restantes: {producto.Stock - cantidadEnCarrito1}",
+                                    "Carrito",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Error al actualizar el stock en la base de datos.",
+                                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show($"No se pueden agregar más unidades del producto '{nombreImagen}'.\n" +
+                                $"Stock disponible: {producto.Stock}, ya tienes: {cantidadEnCarrito1}.",
+                                "Límite alcanzado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show($"El producto '{nombreImagen}' no se encuentra en la base de datos.",
+                            "Producto no encontrado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+
+                    adminProd.Disconnect();
+                }
+                else
+                {
+                    MessageBox.Show("El TextBox está vacío. No se puede agregar al carrito.",
+                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al agregar al carrito: " + ex.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            int cantidadEnCarrito1 = 0;
+
+            try
+            {
+                string nombreImagen = textBox5.Text;
+
+                if (!string.IsNullOrEmpty(nombreImagen))
+                {
+                    AdminProd adminProd = new AdminProd();
+
+
+                    Productos producto = adminProd.ConsultaProducto(nombreImagen);
+
+                    if (producto != null)
+                    {
+                        if (producto.Stock > cantidadEnCarrito1)
+                        {
+                            // Incrementar el contador para este producto
+                            cantidadEnCarrito1++;
+
+                            // Decrementar el stock en la base de datos
+                            bool stockActualizado = adminProd.ActualizarStock(nombreImagen, producto.Stock - 1);
+
+                            if (stockActualizado)
+                            {
+                                // Agregar el producto al carrito
+                                CarritoGlobal.carrito.Add(producto);
+
+                                // Mostrar los detalles del producto
+                                MessageBox.Show(
+                                    $"Producto agregado al carrito:\n\n" +
+                                    $"Nombre: {nombreImagen}\n" +
+                                    $"Descripción: {producto.Descripcion}\n" +
+                                    $"Precio: {producto.Precio:C}\n" +
+                                    $"Existencias restantes: {producto.Stock - cantidadEnCarrito1}",
+                                    "Carrito",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Error al actualizar el stock en la base de datos.",
+                                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show($"No se pueden agregar más unidades del producto '{nombreImagen}'.\n" +
+                                $"Stock disponible: {producto.Stock}, ya tienes: {cantidadEnCarrito1}.",
+                                "Límite alcanzado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show($"El producto '{nombreImagen}' no se encuentra en la base de datos.",
+                            "Producto no encontrado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+
+                    adminProd.Disconnect();
+                }
+                else
+                {
+                    MessageBox.Show("El TextBox está vacío. No se puede agregar al carrito.",
+                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al agregar al carrito: " + ex.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            int cantidadEnCarrito1 = 0;
+
+            try
+            {
+                string nombreImagen = textBox6.Text;
+
+                if (!string.IsNullOrEmpty(nombreImagen))
+                {
+                    AdminProd adminProd = new AdminProd();
+
+
+                    Productos producto = adminProd.ConsultaProducto(nombreImagen);
+
+                    if (producto != null)
+                    {
+                        if (producto.Stock > cantidadEnCarrito1)
+                        {
+                            // Incrementar el contador para este producto
+                            cantidadEnCarrito1++;
+
+                            // Decrementar el stock en la base de datos
+                            bool stockActualizado = adminProd.ActualizarStock(nombreImagen, producto.Stock - 1);
+
+                            if (stockActualizado)
+                            {
+                                // Agregar el producto al carrito
+                                CarritoGlobal.carrito.Add(producto);
+
+                                // Mostrar los detalles del producto
+                                MessageBox.Show(
+                                    $"Producto agregado al carrito:\n\n" +
+                                    $"Nombre: {nombreImagen}\n" +
+                                    $"Descripción: {producto.Descripcion}\n" +
+                                    $"Precio: {producto.Precio:C}\n" +
+                                    $"Existencias restantes: {producto.Stock - cantidadEnCarrito1}",
+                                    "Carrito",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Error al actualizar el stock en la base de datos.",
+                                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show($"No se pueden agregar más unidades del producto '{nombreImagen}'.\n" +
+                                $"Stock disponible: {producto.Stock}, ya tienes: {cantidadEnCarrito1}.",
+                                "Límite alcanzado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show($"El producto '{nombreImagen}' no se encuentra en la base de datos.",
+                            "Producto no encontrado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+
+                    adminProd.Disconnect();
+                }
+                else
+                {
+                    MessageBox.Show("El TextBox está vacío. No se puede agregar al carrito.",
+                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al agregar al carrito: " + ex.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            int cantidadEnCarrito1 = 0;
+
+            try
+            {
+                string nombreImagen = textBox7.Text;
+
+                if (!string.IsNullOrEmpty(nombreImagen))
+                {
+                    AdminProd adminProd = new AdminProd();
+
+
+                    Productos producto = adminProd.ConsultaProducto(nombreImagen);
+
+                    if (producto != null)
+                    {
+                        if (producto.Stock > cantidadEnCarrito1)
+                        {
+                            // Incrementar el contador para este producto
+                            cantidadEnCarrito1++;
+
+                            // Decrementar el stock en la base de datos
+                            bool stockActualizado = adminProd.ActualizarStock(nombreImagen, producto.Stock - 1);
+
+                            if (stockActualizado)
+                            {
+                                // Agregar el producto al carrito
+                                CarritoGlobal.carrito.Add(producto);
+
+                                // Mostrar los detalles del producto
+                                MessageBox.Show(
+                                    $"Producto agregado al carrito:\n\n" +
+                                    $"Nombre: {nombreImagen}\n" +
+                                    $"Descripción: {producto.Descripcion}\n" +
+                                    $"Precio: {producto.Precio:C}\n" +
+                                    $"Existencias restantes: {producto.Stock - cantidadEnCarrito1}",
+                                    "Carrito",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Error al actualizar el stock en la base de datos.",
+                                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show($"No se pueden agregar más unidades del producto '{nombreImagen}'.\n" +
+                                $"Stock disponible: {producto.Stock}, ya tienes: {cantidadEnCarrito1}.",
+                                "Límite alcanzado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show($"El producto '{nombreImagen}' no se encuentra en la base de datos.",
+                            "Producto no encontrado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+
+                    adminProd.Disconnect();
+                }
+                else
+                {
+                    MessageBox.Show("El TextBox está vacío. No se puede agregar al carrito.",
+                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al agregar al carrito: " + ex.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            int cantidadEnCarrito1 = 0;
+
+            try
+            {
+                string nombreImagen = textBox8.Text;
+
+                if (!string.IsNullOrEmpty(nombreImagen))
+                {
+                    AdminProd adminProd = new AdminProd();
+
+
+                    Productos producto = adminProd.ConsultaProducto(nombreImagen);
+
+                    if (producto != null)
+                    {
+                        if (producto.Stock > cantidadEnCarrito1)
+                        {
+                            // Incrementar el contador para este producto
+                            cantidadEnCarrito1++;
+
+                            // Decrementar el stock en la base de datos
+                            bool stockActualizado = adminProd.ActualizarStock(nombreImagen, producto.Stock - 1);
+
+                            if (stockActualizado)
+                            {
+                                // Agregar el producto al carrito
+                                CarritoGlobal.carrito.Add(producto);
+
+                                // Mostrar los detalles del producto
+                                MessageBox.Show(
+                                    $"Producto agregado al carrito:\n\n" +
+                                    $"Nombre: {nombreImagen}\n" +
+                                    $"Descripción: {producto.Descripcion}\n" +
+                                    $"Precio: {producto.Precio:C}\n" +
+                                    $"Existencias restantes: {producto.Stock - cantidadEnCarrito1}",
+                                    "Carrito",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Error al actualizar el stock en la base de datos.",
+                                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show($"No se pueden agregar más unidades del producto '{nombreImagen}'.\n" +
+                                $"Stock disponible: {producto.Stock}, ya tienes: {cantidadEnCarrito1}.",
+                                "Límite alcanzado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show($"El producto '{nombreImagen}' no se encuentra en la base de datos.",
+                            "Producto no encontrado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+
+                    adminProd.Disconnect();
+                }
+                else
+                {
+                    MessageBox.Show("El TextBox está vacío. No se puede agregar al carrito.",
+                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al agregar al carrito: " + ex.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            int cantidadEnCarrito1 = 0;
+
+            try
+            {
+                string nombreImagen = textBox9.Text;
+
+                if (!string.IsNullOrEmpty(nombreImagen))
+                {
+                    AdminProd adminProd = new AdminProd();
+
+
+                    Productos producto = adminProd.ConsultaProducto(nombreImagen);
+
+                    if (producto != null)
+                    {
+                        if (producto.Stock > cantidadEnCarrito1)
+                        {
+                            // Incrementar el contador para este producto
+                            cantidadEnCarrito1++;
+
+                            // Decrementar el stock en la base de datos
+                            bool stockActualizado = adminProd.ActualizarStock(nombreImagen, producto.Stock - 1);
+
+                            if (stockActualizado)
+                            {
+                                // Agregar el producto al carrito
+                                CarritoGlobal.carrito.Add(producto);
+
+                                // Mostrar los detalles del producto
+                                MessageBox.Show(
+                                    $"Producto agregado al carrito:\n\n" +
+                                    $"Nombre: {nombreImagen}\n" +
+                                    $"Descripción: {producto.Descripcion}\n" +
+                                    $"Precio: {producto.Precio:C}\n" +
+                                    $"Existencias restantes: {producto.Stock - cantidadEnCarrito1}",
+                                    "Carrito",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Error al actualizar el stock en la base de datos.",
+                                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show($"No se pueden agregar más unidades del producto '{nombreImagen}'.\n" +
+                                $"Stock disponible: {producto.Stock}, ya tienes: {cantidadEnCarrito1}.",
+                                "Límite alcanzado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show($"El producto '{nombreImagen}' no se encuentra en la base de datos.",
+                            "Producto no encontrado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+
+                    adminProd.Disconnect();
+                }
+                else
+                {
+                    MessageBox.Show("El TextBox está vacío. No se puede agregar al carrito.",
+                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al agregar al carrito: " + ex.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            int cantidadEnCarrito1 = 0;
+
+            try
+            {
+                string nombreImagen = textBox10.Text;
+
+                if (!string.IsNullOrEmpty(nombreImagen))
+                {
+                    AdminProd adminProd = new AdminProd();
+
+
+                    Productos producto = adminProd.ConsultaProducto(nombreImagen);
+
+                    if (producto != null)
+                    {
+                        if (producto.Stock > cantidadEnCarrito1)
+                        {
+                            // Incrementar el contador para este producto
+                            cantidadEnCarrito1++;
+
+                            // Decrementar el stock en la base de datos
+                            bool stockActualizado = adminProd.ActualizarStock(nombreImagen, producto.Stock - 1);
+
+                            if (stockActualizado)
+                            {
+                                // Agregar el producto al carrito
+                                CarritoGlobal.carrito.Add(producto);
+
+                                // Mostrar los detalles del producto
+                                MessageBox.Show(
+                                    $"Producto agregado al carrito:\n\n" +
+                                    $"Nombre: {nombreImagen}\n" +
+                                    $"Descripción: {producto.Descripcion}\n" +
+                                    $"Precio: {producto.Precio:C}\n" +
+                                    $"Existencias restantes: {producto.Stock - cantidadEnCarrito1}",
+                                    "Carrito",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Error al actualizar el stock en la base de datos.",
+                                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show($"No se pueden agregar más unidades del producto '{nombreImagen}'.\n" +
+                                $"Stock disponible: {producto.Stock}, ya tienes: {cantidadEnCarrito1}.",
+                                "Límite alcanzado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show($"El producto '{nombreImagen}' no se encuentra en la base de datos.",
+                            "Producto no encontrado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+
+                    adminProd.Disconnect();
                 }
                 else
                 {
@@ -226,223 +901,21 @@ namespace WindowsProyectoFinal
 
 
 
-
-
-        private void button2_Click(object sender, EventArgs e)
+        private void timer1_Tick(object sender, EventArgs e)
         {
-            try
-            {
-                string nombreImagen = textBox2.Text;
-
-                if (!string.IsNullOrEmpty(nombreImagen))
-                {
-                    Productos producto = new Productos(0, nombreImagen, "", 0, 0);
-                    CarritoGlobal.carrito.Add(producto);
-
-                    MessageBox.Show($"Producto '{nombreImagen}' agregado al carrito.", "Carrito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    MessageBox.Show("El TextBox está vacío. No se puede agregar al carrito.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al agregar al carrito: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            // Actualizar la hora en el Label cada segundo
+            
         }
 
-        private void button3_Click(object sender, EventArgs e)
+
+        private void labelHora_Click(object sender, EventArgs e)
         {
-            try
-            {
-                string nombreImagen = textBox3.Text; 
 
-                if (!string.IsNullOrEmpty(nombreImagen))
-                {
-                    Productos producto = new Productos(0, nombreImagen, "", 0, 0);
-                    CarritoGlobal.carrito.Add(producto);
-
-                    MessageBox.Show($"Producto '{nombreImagen}' agregado al carrito.", "Carrito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    MessageBox.Show("El TextBox está vacío. No se puede agregar al carrito.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al agregar al carrito: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void timer1_Tick_1(object sender, EventArgs e)
         {
-            try
-            {
-                string nombreImagen = textBox4.Text; 
-
-                if (!string.IsNullOrEmpty(nombreImagen))
-                {
-                    Productos producto = new Productos(0, nombreImagen, "", 0, 0);
-                    CarritoGlobal.carrito.Add(producto);
-
-                    MessageBox.Show($"Producto '{nombreImagen}' agregado al carrito.", "Carrito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    MessageBox.Show("El TextBox está vacío. No se puede agregar al carrito.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al agregar al carrito: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string nombreImagen = textBox5.Text;
-
-                if (!string.IsNullOrEmpty(nombreImagen))
-                {
-                    Productos producto = new Productos(0, nombreImagen, "", 0, 0);
-                    CarritoGlobal.carrito.Add(producto);
-
-                    MessageBox.Show($"Producto '{nombreImagen}' agregado al carrito.", "Carrito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    MessageBox.Show("El TextBox está vacío. No se puede agregar al carrito.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al agregar al carrito: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string nombreImagen = textBox6.Text;
-
-                if (!string.IsNullOrEmpty(nombreImagen))
-                {
-                    Productos producto = new Productos(0, nombreImagen, "", 0, 0);
-                    CarritoGlobal.carrito.Add(producto);
-
-                    MessageBox.Show($"Producto '{nombreImagen}' agregado al carrito.", "Carrito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    MessageBox.Show("El TextBox está vacío. No se puede agregar al carrito.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al agregar al carrito: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void button7_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string nombreImagen = textBox7.Text;
-
-                if (!string.IsNullOrEmpty(nombreImagen))
-                {
-                    Productos producto = new Productos(0, nombreImagen, "", 0, 0);
-                    CarritoGlobal.carrito.Add(producto);
-
-                    MessageBox.Show($"Producto '{nombreImagen}' agregado al carrito.", "Carrito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    MessageBox.Show("El TextBox está vacío. No se puede agregar al carrito.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al agregar al carrito: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void button8_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string nombreImagen = textBox8.Text;
-
-                if (!string.IsNullOrEmpty(nombreImagen))
-                {
-                    Productos producto = new Productos(0, nombreImagen, "", 0, 0);
-                    CarritoGlobal.carrito.Add(producto);
-
-                    MessageBox.Show($"Producto '{nombreImagen}' agregado al carrito.", "Carrito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    MessageBox.Show("El TextBox está vacío. No se puede agregar al carrito.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al agregar al carrito: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void button9_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string nombreImagen = textBox9.Text;
-
-                if (!string.IsNullOrEmpty(nombreImagen))
-                {
-                    Productos producto = new Productos(0, nombreImagen, "", 0, 0);
-                    CarritoGlobal.carrito.Add(producto);
-
-                    MessageBox.Show($"Producto '{nombreImagen}' agregado al carrito.", "Carrito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    MessageBox.Show("El TextBox está vacío. No se puede agregar al carrito.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al agregar al carrito: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void button10_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string nombreImagen = textBox10.Text;
-
-                if (!string.IsNullOrEmpty(nombreImagen))
-                {
-                    Productos producto = new Productos(0, nombreImagen, "", 0, 0);
-                    CarritoGlobal.carrito.Add(producto);
-
-                    MessageBox.Show($"Producto '{nombreImagen}' agregado al carrito.", "Carrito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    MessageBox.Show("El TextBox está vacío. No se puede agregar al carrito.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al agregar al carrito: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            labelHora.Text = DateTime.Now.ToString("HH:mm:ss");
         }
     }
-
 }

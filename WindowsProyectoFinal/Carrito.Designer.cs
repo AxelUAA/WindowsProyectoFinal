@@ -32,7 +32,6 @@
             this.buttonEliminar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxEliminar = new System.Windows.Forms.TextBox();
-            this.button3 = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.button2 = new System.Windows.Forms.Button();
@@ -47,7 +46,6 @@
             this.groupBoxLogin.Controls.Add(this.buttonEliminar);
             this.groupBoxLogin.Controls.Add(this.label1);
             this.groupBoxLogin.Controls.Add(this.textBoxEliminar);
-            this.groupBoxLogin.Controls.Add(this.button3);
             this.groupBoxLogin.Controls.Add(this.richTextBox1);
             this.groupBoxLogin.Controls.Add(this.pictureBox2);
             this.groupBoxLogin.Font = new System.Drawing.Font("Segoe UI", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -67,7 +65,7 @@
             this.buttonEliminar.BackColor = System.Drawing.SystemColors.ControlText;
             this.buttonEliminar.Font = new System.Drawing.Font("Segoe UI Black", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonEliminar.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.buttonEliminar.Location = new System.Drawing.Point(554, 278);
+            this.buttonEliminar.Location = new System.Drawing.Point(601, 230);
             this.buttonEliminar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonEliminar.Name = "buttonEliminar";
             this.buttonEliminar.Size = new System.Drawing.Size(235, 41);
@@ -79,7 +77,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(547, 188);
+            this.label1.Location = new System.Drawing.Point(594, 140);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(256, 38);
             this.label1.TabIndex = 27;
@@ -88,33 +86,19 @@
             // textBoxEliminar
             // 
             this.textBoxEliminar.BackColor = System.Drawing.SystemColors.WindowFrame;
-            this.textBoxEliminar.Location = new System.Drawing.Point(554, 229);
+            this.textBoxEliminar.Location = new System.Drawing.Point(601, 181);
             this.textBoxEliminar.Name = "textBoxEliminar";
             this.textBoxEliminar.Size = new System.Drawing.Size(235, 44);
             this.textBoxEliminar.TabIndex = 26;
             this.textBoxEliminar.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.SystemColors.ControlText;
-            this.button3.Font = new System.Drawing.Font("Segoe UI Black", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.button3.Location = new System.Drawing.Point(162, 127);
-            this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(209, 56);
-            this.button3.TabIndex = 25;
-            this.button3.Text = "Actualizar Carro";
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
             // richTextBox1
             // 
             this.richTextBox1.BackColor = System.Drawing.SystemColors.WindowFrame;
-            this.richTextBox1.Location = new System.Drawing.Point(68, 188);
+            this.richTextBox1.Location = new System.Drawing.Point(68, 143);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(396, 286);
+            this.richTextBox1.Size = new System.Drawing.Size(396, 331);
             this.richTextBox1.TabIndex = 3;
             this.richTextBox1.Text = "";
             this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
@@ -184,7 +168,6 @@
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBoxEliminar;
         private System.Windows.Forms.Button buttonEliminar;
