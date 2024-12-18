@@ -3,72 +3,101 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using iTextSharp.text.pdf;
 using iTextSharp.text;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using Microsoft.VisualBasic.ApplicationServices;
+using iTextSharp.text.pdf;
+using System.IO;
 
 namespace WindowsProyectoFinal
 {
-    public partial class Compra : Form
+    public partial class InfoCompra : Form
     {
-        public string tipo;
-        public string nombre;
-        public string numero;
         private int userId;
-        
+        private string nombre;
+        private double totalConImpuestos;
 
-        public Compra()
+
+        private Dictionary<string, int> precios = new Dictionary<string, int>
+        {
+            { "Navaja", 500 },
+            { "Maquina1", 2000 },
+            { "Maquina2", 3000 },
+            { "Tijeras", 400 },
+            { "Capa", 200 },
+            { "After", 300 },
+            { "Kit", 600 },
+            {"Rastrillo", 200 }
+        };
+
+        public InfoCompra()
         {
             InitializeComponent();
+            CargarListaCompra();
         }
 
-        private void Compra_Load(object sender, EventArgs e)
+        private void CargarListaCompra()
         {
+            // Mostrar hora de generación al inicio
+            DateTime horaGeneracion = DateTime.Now;
+            richTextBox1.AppendText($"Hora: {horaGeneracion.ToString("hh:mm tt")}\n\n");
 
+            int total = 0;
+            foreach (var producto in CarritoGlobal.carrito)
+            {
+                // Usar Nombreimagen como nombre del producto
+                string nombreProducto = producto.Nombreimagen;
+
+                if (precios.ContainsKey(nombreProducto))
+                {
+                    int precio = precios[nombreProducto];
+                    richTextBox1.AppendText($"{nombreProducto} - ${precio}\n");
+                    total += precio;
+                }
+                else
+                {
+                    richTextBox1.AppendText($"{nombreProducto} - Precio no disponible\n");
+                }
+            }
+
+            // Calcular impuestos (6%)
+            double impuestos = total * 0.06;
+            totalConImpuestos = total + impuestos;
+
+            // Mostrar subtotal, impuestos y total con impuestos
+            richTextBox1.AppendText($"\nSubtotal: ${total}");
+            richTextBox1.AppendText($"\nImpuestos (6%): ${impuestos:F2}");
+            richTextBox1.AppendText($"\nTotal con impuestos: ${totalConImpuestos:F2}");
         }
 
-     
-
-        private void BtnPagar_Click(object sender, EventArgs e)
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
-            // Validar si el TextBox está vacío o tiene solo espacios en blanco
-            if (string.IsNullOrWhiteSpace(textBoxCVV.Text)|| string.IsNullOrWhiteSpace(textBoxFecha.Text)|| string.IsNullOrWhiteSpace(textBoxNombre.Text)||string.IsNullOrWhiteSpace(textBoxTarjeta.Text))
-            {
-                MessageBox.Show("Algun campo esta vacío.");
-            }
+            // Evento no necesario, puedes eliminarlo si no se usa
+        }
 
-            numero= textBoxTarjeta.Text;
-            nombre= textBoxNombre.Text;
+        private void btnRegresar_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Carrito carrito = new Carrito();
+            carrito.ShowDialog();
+        }
 
-            if (radioButtonAmerican.Checked)
-            {
-                tipo = "American Express";
-            }
-            else if (radioButtonMaster.Checked)
-            {
-                tipo = "MasterCard";
-            }
-            else if (radioButtonVisa.Checked)
-            {
-                tipo = "Visa";
-            }
-            else 
-            {
-                MessageBox.Show("Seleciona el tipo de tarjeta");
-                return;
-            }
+        private void btnPagoTarjeta_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Compra compra = new Compra();
+            compra.ShowDialog();
+        }
 
+        private void btnPagoOxxo_Click(object sender, EventArgs e)
+        {
             try
             {
                 // Ruta del archivo PDF
                 string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-                string filePath = Path.Combine(desktopPath, "TicketPagoTarjeta.pdf");
+                string filePath = Path.Combine(desktopPath, "TicketOXXO.pdf");
 
                 // Eliminar el archivo si ya existe
                 if (File.Exists(filePath))
@@ -86,7 +115,7 @@ namespace WindowsProyectoFinal
             { "Capa", 200 },
             { "After", 300 },
             { "Kit", 600 },
-             {"Rastrillo", 200 }
+            {"Rastrillo", 200 }
         };
 
                 // Subtotal, impuestos y total
@@ -140,21 +169,25 @@ namespace WindowsProyectoFinal
                 total.Alignment = Element.ALIGN_RIGHT;
                 document.Add(total);
 
-                // 6. Mensaje "Pago generado con tarjeta"
-                Paragraph leyenda = new Paragraph("Pago generado con tarjeta", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 14));
+                // 6. Mensaje final
+                Paragraph leyenda = new Paragraph("Escanear en OXXO", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 14));
                 leyenda.Alignment = Element.ALIGN_CENTER;
                 document.Add(leyenda);
                 document.Add(new Paragraph("\n"));
 
-                // 7. Datos de la tarjeta
-                // Asegúrate de que las variables 'numero', 'nombre' y 'tipo' estén correctamente obtenidas desde los campos
-                string tarjetaInfo = $"Nombre asociado: {nombre}\nTipo de tarjeta: {tipo}\nNúmero de tarjeta: {numero}";
-                Paragraph tarjetaDatos = new Paragraph(tarjetaInfo, FontFactory.GetFont(FontFactory.HELVETICA, 12));
-                tarjetaDatos.Alignment = Element.ALIGN_CENTER;
-                document.Add(tarjetaDatos);
+                // 7. Código de barras
+                Barcode128 barcode = new Barcode128
+                {
+                    Code = "123456789012" 
+                };
+
+                PdfContentByte cb = writer.DirectContent; // Obtener DirectContent desde el PdfWriter
+                iTextSharp.text.Image barcodeImage = barcode.CreateImageWithBarcode(cb, BaseColor.BLACK, BaseColor.BLACK);
+                barcodeImage.Alignment = Element.ALIGN_CENTER;
+                document.Add(barcodeImage);
 
                 // 8. Agregar imagen desde los recursos
-                string imageName = "77-shop"; // Cambia esto por el nombre real
+                string imageName = "77-shop"; 
                 object resourceImage = Properties.Resources.ResourceManager.GetObject(imageName);
 
                 if (resourceImage is System.Drawing.Bitmap bitmap)
@@ -163,7 +196,7 @@ namespace WindowsProyectoFinal
                     {
                         bitmap.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
                         iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance(ms.ToArray());
-                        img.ScaleToFit(400f, 200f);  // Aumenta el tamaño de la imagen
+                        img.ScaleToFit(400f, 200f);  // Aumentar el tamaño de la imagen
                         img.Alignment = Element.ALIGN_CENTER;
                         document.Add(img);
                     }
@@ -183,24 +216,28 @@ namespace WindowsProyectoFinal
             {
                 MessageBox.Show($"Error al generar el ticket: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            //limpiar variable antes de usarse otra vez
 
             // Eliminar productos con stock = 0 de la base de datos
-            AdminProd adminProd = new AdminProd();
-            int productosEliminados = adminProd.EliminarProductosSinStock();
+                AdminProd adminProd = new AdminProd();
+                int productosEliminados = adminProd.EliminarProductosSinStock();
+            //limpiar variable antes de usarse otra vez
             CarritoGlobal.carrito.Clear();
 
             this.Close();
             Stock stock = new Stock(userId, nombre);
             stock.ShowDialog();
 
+
+
         }
 
-        private void buttonRegresar_Click(object sender, EventArgs e)
+       
+
+        private void btnPagoEfectivo_Click_1(object sender, EventArgs e)
         {
-            this.Hide();
-            InfoCompra info=new InfoCompra();
-            info.ShowDialog();
+            this.Close();
+            Efectivo efectivo = new Efectivo(totalConImpuestos);
+            efectivo.ShowDialog();
         }
     }
 }
