@@ -17,7 +17,7 @@ namespace WindowsProyectoFinal
     {
         private int userId;
         private string nombre;
-
+        private double totalConImpuestos;
 
 
         private Dictionary<string, int> precios = new Dictionary<string, int>
@@ -63,7 +63,7 @@ namespace WindowsProyectoFinal
 
             // Calcular impuestos (6%)
             double impuestos = total * 0.06;
-            double totalConImpuestos = total + impuestos;
+            totalConImpuestos = total + impuestos;
 
             // Mostrar subtotal, impuestos y total con impuestos
             richTextBox1.AppendText($"\nSubtotal: ${total}");
@@ -221,5 +221,13 @@ namespace WindowsProyectoFinal
 
         }
 
+       
+
+        private void btnPagoEfectivo_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+            Efectivo efectivo = new Efectivo(totalConImpuestos);
+            efectivo.ShowDialog();
+        }
     }
 }
