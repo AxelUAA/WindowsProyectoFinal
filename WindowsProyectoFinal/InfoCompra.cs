@@ -28,7 +28,8 @@ namespace WindowsProyectoFinal
             { "Tijeras", 400 },
             { "Capa", 200 },
             { "After", 300 },
-            { "Kit", 600 }
+            { "Kit", 600 },
+            {"Rastrillo", 200 }
         };
 
         public InfoCompra()
@@ -113,7 +114,8 @@ namespace WindowsProyectoFinal
             { "Tijeras", 400 },
             { "Capa", 200 },
             { "After", 300 },
-            { "Kit", 600 }
+            { "Kit", 600 },
+            {"Rastrillo", 200 }
         };
 
                 // Subtotal, impuestos y total
@@ -214,10 +216,14 @@ namespace WindowsProyectoFinal
             {
                 MessageBox.Show($"Error al generar el ticket: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            //limpiar variable antes de usarse otra vez
+            CarritoGlobal.carrito.Clear();
 
             this.Close();
             Stock stock = new Stock(userId, nombre);
             stock.ShowDialog();
+
+
 
         }
 

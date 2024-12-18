@@ -78,11 +78,11 @@
             this.labelNombreTarjeta.BackColor = System.Drawing.Color.Transparent;
             this.labelNombreTarjeta.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelNombreTarjeta.ForeColor = System.Drawing.Color.White;
-            this.labelNombreTarjeta.Location = new System.Drawing.Point(20, 134);
+            this.labelNombreTarjeta.Location = new System.Drawing.Point(29, 129);
             this.labelNombreTarjeta.Name = "labelNombreTarjeta";
-            this.labelNombreTarjeta.Size = new System.Drawing.Size(280, 41);
+            this.labelNombreTarjeta.Size = new System.Drawing.Size(305, 41);
             this.labelNombreTarjeta.TabIndex = 2;
-            this.labelNombreTarjeta.Text = "Nombre asociado a  la tarjeta";
+            this.labelNombreTarjeta.Text = "Nombre asociado a  la tarjeta ";
             // 
             // textBoxNombre
             // 

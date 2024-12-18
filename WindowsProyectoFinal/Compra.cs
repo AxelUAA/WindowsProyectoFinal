@@ -68,7 +68,7 @@ namespace WindowsProyectoFinal
             {
                 // Ruta del archivo PDF
                 string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-                string filePath = Path.Combine(desktopPath, "TicketOXXO.pdf");
+                string filePath = Path.Combine(desktopPath, "TicketPagoTarjeta.pdf");
 
                 // Eliminar el archivo si ya existe
                 if (File.Exists(filePath))
@@ -85,7 +85,8 @@ namespace WindowsProyectoFinal
             { "Tijeras", 400 },
             { "Capa", 200 },
             { "After", 300 },
-            { "Kit", 600 }
+            { "Kit", 600 },
+             {"Rastrillo", 200 }
         };
 
                 // Subtotal, impuestos y total
@@ -182,6 +183,8 @@ namespace WindowsProyectoFinal
             {
                 MessageBox.Show($"Error al generar el ticket: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            //limpiar variable antes de usarse otra vez
+            CarritoGlobal.carrito.Clear();
 
             this.Close();
             Stock stock = new Stock(userId, nombre);
@@ -192,8 +195,8 @@ namespace WindowsProyectoFinal
         private void buttonRegresar_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Carrito carrito = new Carrito();
-            carrito.ShowDialog();
+            InfoCompra info=new InfoCompra();
+            info.ShowDialog();
         }
     }
 }
