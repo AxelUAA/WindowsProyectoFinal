@@ -96,30 +96,6 @@ namespace WindowsProyectoFinal
                 MessageBox.Show("Error al cargar datos o imágenes: " + ex.Message);
             }
         }
-
-
-        private void OpcAdmin_Click(object sender, EventArgs e)
-        {
-
-            // If the user is an admin, open the Opciones Admin form
-            OpcionesAdmin opcionesAdmin = new OpcionesAdmin(name);
-            opcionesAdmin.ShowDialog();
-
-            /*else
-            {
-                // If the user is not an admin, show a message
-                MessageBox.Show("No tienes permisos para acceder a esta opción.", "Acceso Denegado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }*/
-        }
-
-        // Método para verificar si el usuario es administrador
-        private bool EsUsuarioAdministrador()
-        {
-            // Aquí deberías implementar la lógica para verificar si el usuario es administrador
-            // Por ejemplo, podrías tener una variable booleana que se establezca al iniciar sesión
-            return true; // Cambia esto según tu lógica de autenticación
-        }
-
         private void Stock_Load(object sender, EventArgs e)
         {
 
