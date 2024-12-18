@@ -105,43 +105,53 @@ namespace WindowsProyectoFinal
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
                 openFileDialog.Title = "Seleccionar Imagen";
-                openFileDialog.Filter = "Archivos de Imagen(*.jpg;*.jpeg;*.png)|*.jpg;*.jpeg;*.png;*.bmp";
+                openFileDialog.Filter = "Archivos de Imagen (*.jpg;*.jpeg;*.png;*.bmp)|*.jpg;*.jpeg;*.png;*.bmp";
 
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     try
                     {
-                        rutaImagen =openFileDialog.FileName;
+                        rutaImagen = openFileDialog.FileName;
 
-                        string carpetaDestino = Path.Combine(Application.StartupPath, "Resources");
+                        // Ruta fija donde se guardarán las imágenes
+                        string carpetaDestino = @"C:\Users\axeli\source\repos\WindowsProyectoFinal\WindowsProyectoFinal\Imagenes";
+
+                        // Verificar si la carpeta existe, si no, crearla
                         if (!Directory.Exists(carpetaDestino))
                         {
                             Directory.CreateDirectory(carpetaDestino);
                         }
 
-                        string destino = Path.Combine(Application.StartupPath, "Resources", Path.GetFileName(rutaImagen));
+                        string nombreArchivo = Path.GetFileName(rutaImagen); // Obtener el nombre de la imagen
+                        string destino = Path.Combine(carpetaDestino, nombreArchivo); // Ruta final
+
+                        // Copiar la imagen a la carpeta de destino
                         File.Copy(rutaImagen, destino, true);
 
-                        MessageBox.Show("Imagen agregada correctamente.");
+                        MessageBox.Show("Imagen guardada correctamente en la carpeta 'Imagenes'.",
+                                        "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                        pictureBoxProducto.ImageLocation = destino; ; 
-
-
+                        // Mostrar la imagen en el PictureBox
+                        pictureBoxProducto.Image = Image.FromFile(destino);
+                        pictureBoxProducto.SizeMode = PictureBoxSizeMode.Zoom;
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show($"Error al cargar la imagen: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show($"Error al cargar la imagen: {ex.Message}",
+                                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
         }
+
         private void btnGuardarProducto_Click(object sender, EventArgs e)
         {
             if (ValidarCampos())
             {
                 try
                 {
-                    string carpetaDestino = Path.Combine(Application.StartupPath, "Resources");
+                    // Ruta fija donde se guardarán las imágenes
+                    string carpetaDestino = @"C:\Users\axeli\source\repos\WindowsProyectoFinal\WindowsProyectoFinal\Imagenes";
 
                     if (!Directory.Exists(carpetaDestino))
                     {
@@ -156,7 +166,6 @@ namespace WindowsProyectoFinal
                         File.Copy(rutaImagen, rutaDestino, true);
                     }
 
-
                     using (MySqlConnection connection = new MySqlConnection("Server=localhost; Database=proyecto; User=root; Password=; SslMode=none;"))
                     {
                         connection.Open();
@@ -166,41 +175,40 @@ namespace WindowsProyectoFinal
                         {
                             int totalProductos = Convert.ToInt32(countCmd.ExecuteScalar());
 
-
                             if (totalProductos >= 10)
                             {
                                 MessageBox.Show("No se pueden agregar más de 10 productos.", "Límite alcanzado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                 return;
                             }
-                            string query = "INSERT INTO productos (id, descripcion, precio, stock, nombreimagen) VALUES (@id, @descripcion, @precio, @stock, @nombreimagen)";
-
-
-                            using (MySqlCommand cmd = new MySqlCommand(query, connection))
-                            {
-                                cmd.Parameters.AddWithValue("@id", Convert.ToInt32(txtId.Text));
-                                cmd.Parameters.AddWithValue("@descripcion", txtDescripcion.Text);
-                                cmd.Parameters.AddWithValue("@precio", Convert.ToDecimal(txtPrecio.Text));
-                                cmd.Parameters.AddWithValue("@stock", Convert.ToInt32(txtExistencias.Text));
-                                cmd.Parameters.AddWithValue("@nombreimagen", txtNombreProdAgregar.Text); 
-
-                                cmd.ExecuteNonQuery();
-                            }
-                            MessageBox.Show("Producto agregado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                            txtId.Clear();
-                            txtNombreProdAgregar.Clear();
-                            txtDescripcion.Clear();
-                            txtPrecio.Clear();
-                            txtExistencias.Clear();
-                            pictureBoxProducto.Image= null;
-
-
-                            SetPlaceholder(txtId, "Ingrese el ID del producto");
-                            SetPlaceholder(txtNombreProdAgregar, "Nombre del Producto");
-                            SetPlaceholder(txtDescripcion, "Descripcion del Producto");
-                            SetPlaceholder(txtExistencias, "Stock (existencias)");
-                            SetPlaceholder(txtPrecio, "Precio del Producto");
                         }
+
+                        string query = "INSERT INTO productos (id, descripcion, precio, stock, nombreimagen) VALUES (@id, @descripcion, @precio, @stock, @nombreimagen)";
+
+                        using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                        {
+                            cmd.Parameters.AddWithValue("@id", Convert.ToInt32(txtId.Text));
+                            cmd.Parameters.AddWithValue("@descripcion", txtDescripcion.Text);
+                            cmd.Parameters.AddWithValue("@precio", Convert.ToDecimal(txtPrecio.Text));
+                            cmd.Parameters.AddWithValue("@stock", Convert.ToInt32(txtExistencias.Text));
+                            cmd.Parameters.AddWithValue("@nombreimagen", nombreImagen);
+
+                            cmd.ExecuteNonQuery();
+                        }
+
+                        MessageBox.Show("Producto agregado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        txtId.Clear();
+                        txtNombreProdAgregar.Clear();
+                        txtDescripcion.Clear();
+                        txtPrecio.Clear();
+                        txtExistencias.Clear();
+                        pictureBoxProducto.Image = null;
+
+                        SetPlaceholder(txtId, "Ingrese el ID del producto");
+                        SetPlaceholder(txtNombreProdAgregar, "Nombre del Producto");
+                        SetPlaceholder(txtDescripcion, "Descripcion del Producto");
+                        SetPlaceholder(txtExistencias, "Stock (existencias)");
+                        SetPlaceholder(txtPrecio, "Precio del Producto");
                     }
                 }
                 catch (Exception ex)
@@ -208,7 +216,12 @@ namespace WindowsProyectoFinal
                     MessageBox.Show($"Error al guardar el producto: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+            else
+            {
+                MessageBox.Show("Por favor, complete todos los campos requeridos.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
+
 
         private bool ValidarCampos()
         {

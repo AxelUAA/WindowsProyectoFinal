@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.textBoxNombre = new System.Windows.Forms.TextBox();
             this.btnRegOAdmin = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.bopcadmin = new System.Windows.Forms.Label();
@@ -36,7 +37,6 @@
             this.btnEliminarPro = new System.Windows.Forms.Button();
             this.btnListado = new System.Windows.Forms.Button();
             this.btnGraficos = new System.Windows.Forms.Button();
-            this.textBoxNombre = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -51,6 +51,17 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(242, 626);
             this.panel1.TabIndex = 0;
+            // 
+            // textBoxNombre
+            // 
+            this.textBoxNombre.BackColor = System.Drawing.Color.Black;
+            this.textBoxNombre.Enabled = false;
+            this.textBoxNombre.Font = new System.Drawing.Font("Cooper Black", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxNombre.ForeColor = System.Drawing.Color.White;
+            this.textBoxNombre.Location = new System.Drawing.Point(-2, 207);
+            this.textBoxNombre.Name = "textBoxNombre";
+            this.textBoxNombre.Size = new System.Drawing.Size(244, 27);
+            this.textBoxNombre.TabIndex = 4;
             // 
             // btnRegOAdmin
             // 
@@ -141,17 +152,6 @@
             this.btnGraficos.UseVisualStyleBackColor = false;
             this.btnGraficos.Click += new System.EventHandler(this.btnGraficos_Click);
             // 
-            // textBoxNombre
-            // 
-            this.textBoxNombre.BackColor = System.Drawing.Color.Black;
-            this.textBoxNombre.Enabled = false;
-            this.textBoxNombre.Font = new System.Drawing.Font("Cooper Black", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxNombre.ForeColor = System.Drawing.Color.White;
-            this.textBoxNombre.Location = new System.Drawing.Point(-2, 207);
-            this.textBoxNombre.Name = "textBoxNombre";
-            this.textBoxNombre.Size = new System.Drawing.Size(244, 27);
-            this.textBoxNombre.TabIndex = 4;
-            // 
             // OpcionesAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -166,6 +166,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "OpcionesAdmin";
             this.Text = "OpcionesAdmin";
+            this.Load += new System.EventHandler(this.OpcionesAdmin_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
