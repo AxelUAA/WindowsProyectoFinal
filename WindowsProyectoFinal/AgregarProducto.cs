@@ -113,8 +113,7 @@ namespace WindowsProyectoFinal
                     {
                         rutaImagen = openFileDialog.FileName;
 
-                        string carpetaDestino = @"C:\Users\axeli\source\repos\WindowsProyectoFinal\WindowsProyectoFinal\Resources";
-
+                        string carpetaDestino = Path.Combine(Application.StartupPath, "Resources");
                         if (!Directory.Exists(carpetaDestino))
                         {
                             Directory.CreateDirectory(carpetaDestino);
@@ -146,8 +145,7 @@ namespace WindowsProyectoFinal
             {
                 try
                 {
-                    string carpetaDestino = @"C:\Users\axeli\source\repos\WindowsProyectoFinal\WindowsProyectoFinal\Resources";
-
+                    string carpetaDestino = Path.Combine(Application.StartupPath, "Resources");
                     if (!Directory.Exists(carpetaDestino))
                     {
                         Directory.CreateDirectory(carpetaDestino);
