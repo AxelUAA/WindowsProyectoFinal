@@ -282,6 +282,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="MetroFramework.txt" />
+    <Content Include="Resources\PeineWhal.jpg" />
     <None Include="Resources\soldout.png" />
     <None Include="Resources\Fondo5.png" />
     <None Include="Resources\kit.png" />
