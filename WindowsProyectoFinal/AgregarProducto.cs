@@ -113,25 +113,21 @@ namespace WindowsProyectoFinal
                     {
                         rutaImagen = openFileDialog.FileName;
 
-                        // Ruta fija donde se guardarán las imágenes
-                        string carpetaDestino = @"C:\Users\axeli\source\repos\WindowsProyectoFinal\WindowsProyectoFinal\Imagenes";
+                        string carpetaDestino = @"C:\Users\axeli\source\repos\WindowsProyectoFinal\WindowsProyectoFinal\Resources";
 
-                        // Verificar si la carpeta existe, si no, crearla
                         if (!Directory.Exists(carpetaDestino))
                         {
                             Directory.CreateDirectory(carpetaDestino);
                         }
 
-                        string nombreArchivo = Path.GetFileName(rutaImagen); // Obtener el nombre de la imagen
-                        string destino = Path.Combine(carpetaDestino, nombreArchivo); // Ruta final
+                        string nombreArchivo = Path.GetFileName(rutaImagen); 
+                        string destino = Path.Combine(carpetaDestino, nombreArchivo); 
 
-                        // Copiar la imagen a la carpeta de destino
                         File.Copy(rutaImagen, destino, true);
 
                         MessageBox.Show("Imagen guardada correctamente en la carpeta 'Imagenes'.",
                                         "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                        // Mostrar la imagen en el PictureBox
                         pictureBoxProducto.Image = Image.FromFile(destino);
                         pictureBoxProducto.SizeMode = PictureBoxSizeMode.Zoom;
                     }
@@ -150,8 +146,7 @@ namespace WindowsProyectoFinal
             {
                 try
                 {
-                    // Ruta fija donde se guardarán las imágenes
-                    string carpetaDestino = @"C:\Users\axeli\source\repos\WindowsProyectoFinal\WindowsProyectoFinal\Imagenes";
+                    string carpetaDestino = @"C:\Users\axeli\source\repos\WindowsProyectoFinal\WindowsProyectoFinal\Resources";
 
                     if (!Directory.Exists(carpetaDestino))
                     {
